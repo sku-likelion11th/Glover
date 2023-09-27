@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>도장 정보 보기</title>
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <td>event_name : {{ stamp_instance.event_name }}</td>
+            </tr>
+            <tr>
+                <td>event_info : {{ stamp_instance.event_info }}</td>
+            </tr>
+            <tr>
+                <td>event_start : {{ stamp_instance.event_start | date:"Y-m-d" }}</td>
+            </tr>
+            <tr>
+                <td>event_end : {{ stamp_instance.event_end | date:"Y-m-d" }}</td>
+            </tr>
+            <!-- 이미지 출력 -->
+            <tr>
+                <td>
+                    {% if stamp_instance.after_image %}
+                        <img src="{{ stamp_instance.after_image.url }}" alt="After Image" width="100" height="100">
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
