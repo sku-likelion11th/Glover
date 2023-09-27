@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>학생 스탬프 현황</title>
+</head>
+<body>
+    {% if student_info %}
+        {% comment %} {% for student in student_info %} {% endcomment %}
+        <h1>{{ student_info.student_id }} {{ student_info.full_name }}</h1>
+        {% comment %} {% endfor %} {% endcomment %}
+        <ul>
+            {% for collection in stamp_collections %}
+                <li>
+                    스탬프 이름: {{ collection.stamp.event_name }}<br>
+                    수집 여부: {{ collection.is_collected }}
+                    {% if collection.is_collected %}
+                        <img src="{{ collection.stamp.image.url }}" alt="수집 이미지" width="100" height="100">
+                    {% else %}
+                        {% comment %} <img src="{{ collection.stamp.before_image.url }}" alt="미수집 이미지" width="100" height="100"> {% endcomment %}
+                    {% endif %}
+                </li>
+            {% empty %}
+                <p>스탬프 정보가 없습니다.</p>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>조회된 학생 정보가 없습니다.</p>
+    {% endif %}
+    <a href="{% url 'main' %}">메인 페이지로 돌아가기</a>
+</body>
+</html>

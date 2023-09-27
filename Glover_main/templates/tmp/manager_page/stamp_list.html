@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>도장 목록</title>
+</head>
+<body>
+    {% csrf_token %}
+    <h1>도장 목록</h1>
+    <ul>
+        {% for stamp in stamps %}
+            <li>
+                <div class="image-preview">
+                    <img src="{{ stamp.image.url }}" alt="After Image Preview" width="100" height="100">
+                </div>
+            - {{ stamp.event_info }}
+            <a href="{% url 'edit_stamp' stamp.event_name %}">수정</a> <!-- 수정 링크 추가 -->
+            <form method="POST" action="{% url 'delete_stamp' stamp.event_name %}">
+                {% csrf_token %}
+                <button type="submit">삭제</button>
+            </form>
+            {% endfor %}
+    <!-- 팝업 모달 -->
+    <div id="confirmation-modal" style="display: none;">
+        <p>정말 삭제하시겠습니까?</p>
+        <button id="confirm-delete">예</button>
+        <button id="cancel-delete">아니오</button>
+    </div>
+
+    <script>
+        var csrf_token = "{{ csrf_token }}";
+        // 삭제 버튼 클릭 시 팝업 창 표시
+        document.getElementById('delete-button').addEventListener('click', function() {
+            document.getElementById('confirmation-modal').style.display = 'block';
+        });
+
+        <!-- JavaScript 코드 일부 -->
+        <!-- JavaScript 코드 일부 -->
+        // 예 버튼 클릭 시 삭제 작업 수행 (Ajax 요청으로 Django 백엔드와 통신)
+        document.getElementById('confirm-delete').addEventListener('click', function() {
+            // Ajax 요청 보내기
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '{% url 'delete_stamp' stamp.event_name %}', true); // URL 패턴을 적절하게 설정하세요.
+            xhr.setRequestHeader('X-CSRFToken', csrf_token); // CSRF 토큰 설정 (필요한 경우)
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // 삭제 작업이 성공한 경우
+                    alert('삭제되었습니다.');
+                    // 페이지를 다시로드하거나 갱신할 수 있습니다.
+                    location.reload();
+                } else {
+                    // 삭제 작업이 실패한 경우
+                    alert('삭제에 실패했습니다.');
+                }
+            };
+
+            xhr.onerror = function() {
+                alert('요청 중 오류가 발생했습니다.');
+            };
+
+            xhr.send();
+        });
+                // 아니오 버튼 클릭 시 팝업 창 닫기
+            document.getElementById('cancel-delete').addEventListener('click', function() {
+            document.getElementById('confirmation-modal').style.display = 'none';
+            });
+    </script>
+        </li>
+        
+    </ul>
+    <a href="{% url 'add_stamp' %}">도장 추가</a>
+</body>
+</html>
