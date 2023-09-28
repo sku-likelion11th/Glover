@@ -369,7 +369,9 @@ select option{
     font-size: 15px;
     font-weight: 700;
 }
-
+.submitBtn {
+    z-index: 2;
+}
 .submit_search{
     margin-top: 15px;
     margin-left: -10px;
