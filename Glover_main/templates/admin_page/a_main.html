@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/855cb859ed.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="display-container tmoney-font">
+    <div class="display-container jamsil-font">
         <!-- navbar section -->
         <nav>
             <div class="navbar jamsil-font">
@@ -36,7 +36,7 @@
                             <p class="tmoney font-bold">청천(靑天)</p>
                             <p class="tmoney">글로벌경영기술대학</p>
                             <div class="menu_line"></div>
-                            <li><a href={% url 'a_events' %}><p class="shilla">이벤트 관리</p><br /></a></li>
+                            <li><a href={% url 'a_manage' %}><p class="shilla">이벤트 관리</p><br /></a></li>
                             <li><a href={% url 'a_search' %}><p class="shilla">이벤트 참여자 조회</p></a></li>
                             <div class="menu_line"></div>
                             <div class="menu_footer">
@@ -60,6 +60,8 @@
         </nav>
         <!-- header section -->
         <div class="header_title header-font">
+            <div class="header-circle">
+            </div>
             <p class="header_name">관리자 페이지</p>
             <p class="header_sub">글천절</p>
             <p class="header_sub2">: 글Lover</p>
@@ -86,7 +88,7 @@
         <!-- button section -->
         <div class="button-section text-center">
             <div class="eventBtn">
-                <a href={% url 'a_events'%}>
+                <a href={% url 'a_manage'%}>
                     <button>이벤트 관리</button>
                 </a>
             </div>

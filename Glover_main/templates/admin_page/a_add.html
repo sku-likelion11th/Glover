@@ -18,7 +18,7 @@
             <div class="navbar jamsil-font">
                 <div class="container nav-container">
                     <div class="nav_logo">
-                        <a href={% url 'a_main'%}>
+                        <a href={% url 'a_main' %}>
                             <img src={% static "images/gloverlogo.png"%} alt="">
                         </a>
                     </div>
@@ -31,12 +31,12 @@
                     <div class="menu-items">
                         <div class="menu_durumari d-flex flex-column text-center">
                             <div class="menu_logo text-center">
-                                <img src={% static "images/gloverlogo.png"%} alt="">
+                                <img src={% static "images/gloverlogo.png" %}alt="">
                             </div>
                             <p class="tmoney font-bold">청천(靑天)</p>
                             <p class="tmoney">글로벌경영기술대학</p>
                             <div class="menu_line"></div>
-                            <li><a href={% url 'a_events' %}><p class="shilla">이벤트 관리</p><br /></a></li>
+                            <li><a href={% url 'a_manage' %}><p class="shilla">이벤트 관리</p><br /></a></li>
                             <li><a href={% url 'a_search' %}><p class="shilla">이벤트 참여자 조회</p></a></li>
                             <div class="menu_line"></div>
                             <div class="menu_footer">
@@ -60,6 +60,7 @@
         </nav>
         <!-- header section -->
         <div class="header_title">
+            <div class="header-circle"></div>
             <p class="header_name">도장 추가</p>
             <p class="header_sub">글천절</p>
             <p class="header_add">: 글Lover</p>
@@ -67,7 +68,6 @@
                 <img src={% static "images/cloud.png"%} alt="구름2" class="cloud1">                
                 <img src={% static "images/cloud.png"%} alt="구름2" class="cloud2">
                 <img src={% static "images/cloud.png"%} alt="구름3" class="cloud3">
-                <!-- <img src="../../img/cloud.png" alt="구름4" class="cloud4"> -->
             </div>
         </div>
         <!-- main section -->
@@ -75,7 +75,7 @@
             <div class="modal-bg">
                 <div class="modal-cont">
                     <div class="modal-head">
-                        <input class="header-font" type="text" name="event_name" id="id_event_name" placeholder="사업명" autofocus>
+                        <input class="header-font" type="text" placeholder="사업명" autofocus>
                         <button class="bi-x">
                             <svg width="15" height="15" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.8334 1.3415L10.6584 0.166504L6.00008 4.82484L1.34175 0.166504L0.166748 1.3415L4.82508 5.99984L0.166748 10.6582L1.34175 11.8332L6.00008 7.17484L10.6584 11.8332L11.8334 10.6582L7.17508 5.99984L11.8334 1.3415Z" fill="#758DBB"/>
@@ -109,7 +109,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+
 
         <!-- second modal section 
         <div class="sec_modal" id="fir_modal">
