@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib import messages
 from .models import student, stamp, stamp_collection
-from django.http import HttpResponse
-from django.contrib.sessions.models import Session
 from django.db import transaction
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
 from django.conf import settings
 import os
 from django.http import JsonResponse
@@ -29,7 +28,7 @@ def main(request, student_id=None):
         # 'search' URL 패턴에 대한 URL 생성
         search_url = reverse('search')
         
-        return render(request, 'user_page/search.html', {'student_info': student_info, 'stamp_collections':stamp_collections, 'agreed': agreed})
+        return render(request, 'user_page/participation.html', {'student_info': student_info, 'stamp_collections':stamp_collections, 'agreed': agreed})
 
     return render(request, 'user_page/index.html')
 
@@ -48,7 +47,7 @@ def search(request):
         'full_name':full_name,
     }
 
-    return render(request, 'user_page/search.html', context)
+    return render(request, 'user_page/participation.html', context)
 
 
 def update_consent(request):
@@ -65,18 +64,6 @@ def update_consent(request):
         return JsonResponse({'message': 'POST 요청이 아닙니다.'}, status=400)
 
 
-# 동의 업뎃
-# def check_consent(request):
-#     if request.method == 'GET':
-#         # 여기에서 사용자의 consent 상태를 확인하고 값을 가져옵니다.
-#         # 예를 들어, 현재 로그인한 사용자의 consent 상태를 확인할 수 있습니다.
-#         user = request.student
-#         consent_status = user.profile.consent  # 사용자 프로필에 consent 필드가 있다고 가정
-
-#         return JsonResponse({'consent_status': consent_status})
-#     else:
-#         return JsonResponse({'error': 'GET 요청이 아닙니다.'})
-
 # 서비스 소개
 def introduce(request):
 	return render(request, 'user_page/introduce.html')
@@ -88,6 +75,7 @@ def makers(request):
 
 
 # 관리자 페이지
+@login_required
 def a_main(request):
 	return render(
 		request,
@@ -96,6 +84,7 @@ def a_main(request):
 
 
 # stamp 추가
+@login_required
 def a_add(request):
     if request.method == 'POST':
         event_name = request.POST['event_name']
@@ -125,12 +114,14 @@ def a_add(request):
 
 
 # stamp 리스트
+@login_required
 def a_events(request):
     stamps = stamp.objects.all()
     return render(request, 'admin_page/a_events.html', {'stamps': stamps})
 
 
 #이벤트 참여자 체크하는 페이지
+@login_required
 def a_search(request):
     events = stamp.objects.all()
     students = student.objects.all()
@@ -210,6 +201,7 @@ def edit_stamp(request, event_name):
 
 
 # stamp 삭제
+@login_required
 def delete_stamp(request, event_name):
     delstamp = get_object_or_404(stamp, event_name=event_name)
     
@@ -221,12 +213,31 @@ def delete_stamp(request, event_name):
 
 
 # stamp 정보 보기
+@login_required
 def info_stamp(request, event_name):
     event_name = unquote(event_name)
     # 스탬프 정보 가져오기
     stamp_instance = get_object_or_404(stamp, event_name=event_name)
     
     return render(request, 'main_page/info_stamp.html', {'stamp_instance': stamp_instance})
+
+
+# 관리자 로그인
+def a_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            # 로그인 성공 후 리다이렉트 또는 다른 작업을 수행할 수 있습니다.
+            return redirect('a_main')
+        else:
+            # 로그인 실패 처리
+            return render(request, 'admin_page/a_login.html', {'error_message': '로그인에 실패했습니다.'})
+    
+    return render(request, 'admin_page/a_login.html')
 
 
 # X버튼 확인

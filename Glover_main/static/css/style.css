@@ -352,7 +352,7 @@
     font-size: 16px;
     outline: none;
     padding: 0; /* 패딩 제거 */
-    background-image: url('../../img/downarrow.png');
+    background-image: url('/static/images/downarrow.png');
     background-repeat: no-repeat;
     background-position: right 10px center; /* 오른쪽 여백을 10px로 조절 */
 
