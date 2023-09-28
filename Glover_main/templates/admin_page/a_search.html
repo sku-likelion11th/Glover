@@ -36,7 +36,7 @@
                     <div class="menu-items">
                         <div class="menu_durumari d-flex flex-column text-center">
                             <div class="menu_logo text-center">
-                                <img src={% static "images/gloverlogo.png" %}alt="">
+                                <img src={% static "images/gloverlogo.png" %} alt="">
                             </div>
                             <p class="tmoney font-bold">청천(靑天)</p>
                             <p class="tmoney">글로벌경영기술대학</p>
@@ -83,33 +83,37 @@
            <div class="button-section jamsil-font">
                 <form class="a_search" id="a_search" method="post" action="{% url 'a_search' %}">
                     {% csrf_token %}
-                    <div class="dropdown-e">
-                        <select id="event_dropdown" name="event_name">
-                            <option value="0" disabled selected>이벤트 조회</option>
-                            {% for event in events %}
-                            <option value="{{ event.event_name }}" {% if event.event_name == initial_data.event_name %}selected {% endif %}>{{ event.event_name }}</option>
-                            {% endfor %}
-                        </select>
+                    <div class="first-button">
+                        <div class="dropdown-e">
+                            <select id="event_dropdown" name="event_name">
+                                <option value="0" disabled selected>이벤트 조회</option>
+                                {% for event in events %}
+                                <option value="{{ event.event_name }}" {% if event.event_name == initial_data.event_name %}selected {% endif %}>{{ event.event_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="dropdown-d">
+                            <select>
+                                <option value="0" disabled selected>학과</option>
+                                <option value="관광개발학과" {% if '관광개발학과' == initial_data.major %}selected {% endif %}>관광개발학과</option>
+                                <option value="경영학과" {% if '경영학과' == initial_data.major %}selected {% endif %}>경영학과</option>
+                                <option value="글로벌물류학부" {% if '글로벌물류학부' == initial_data.major %}selected {% endif %}>글로벌물류학부</option>
+                                <option value="산업경영공학과" {% if '산업경영공학과' == initial_data.major %}selected {% endif %}>산업경영공학과</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="dropdown-d">
-                        <select>
-                            <option value="0" disabled selected>학과</option>
-                            <option value="관광개발학과" {% if '관광개발학과' == initial_data.major %}selected {% endif %}>관광개발학과</option>
-                            <option value="경영학과" {% if '경영학과' == initial_data.major %}selected {% endif %}>경영학과</option>
-                            <option value="글로벌물류학부" {% if '글로벌물류학부' == initial_data.major %}selected {% endif %}>글로벌물류학부</option>
-                            <option value="산업경영공학과" {% if '산업경영공학과' == initial_data.major %}selected {% endif %}>산업경영공학과</option>
-                        </select>
-                    </div>
-                    <div class="search_id">
-                        <input type="text" id="student_id" name="student_id" value="{{ initial_data.student_id }}" placeholder="학번">
-                    </div>
-                    <div>
-                        <button type="submit" value="검색하기" class="submit_search" onclick="tableCreate()">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi-s bi-search" viewBox="0 0 16 16">
-                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                              </svg>
-                            검색하기
-                        </button>
+                    <div class="second-button">
+                        <div class="search_id">
+                            <input type="text" id="student_id" name="student_id" value="{{ initial_data.student_id }}" placeholder="학번">
+                        </div>
+                        <div class="submitBtn">
+                            <button type="submit" value="검색하기" class="submit_search" onclick="tableCreate()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi-s bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                  </svg>
+                                검색하기
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
