@@ -550,3 +550,16 @@
 .blur-effect {
     filter: blur(3px); /* 흐림 효과 크기 지정 (px 단위) */
 }
+
+/* 아이폰 SE 또는 375px 미만의 화면 너비에서 스타일을 적용 */
+@media (max-width: 376px) {
+    
+    .navbar .menu-items {
+        margin-left:-23px;
+    }
+    /* 언덕 위치 조정 */
+    /* .hill{
+        position: absolute;
+        bottom:0;
+    } */
+}

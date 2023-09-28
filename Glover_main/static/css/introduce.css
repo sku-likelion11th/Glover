@@ -349,7 +349,6 @@
 .hill {
     position: absolute;
     bottom: 0;
-
 }
 .hill img {
     width: 415px;
@@ -364,8 +363,8 @@
         margin-left:-23px;
     }
     /* 언덕 위치 조정 */
-    /* .hill{
-        position: absolute;
-        bottom:0;
-    } */
+    .hill{
+        position: static;
+        margin-top: 170px;
+    }
 }

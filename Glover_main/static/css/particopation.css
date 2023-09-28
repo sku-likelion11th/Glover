@@ -507,3 +507,16 @@
     color: rgba(97,97, 97, 0.5);
     margin: 3px 2px;
 }
+
+/* 아이폰 SE 또는 375px 미만의 화면 너비에서 스타일을 적용 */
+@media (max-width: 376px) {
+    
+    .navbar .menu-items {
+        margin-left:-23px;
+    }
+    /* 언덕 위치 조정 */
+    /* .hill{
+        position: absolute;
+        bottom:0;
+    } */
+}

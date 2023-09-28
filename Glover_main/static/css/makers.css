@@ -142,7 +142,7 @@
 
 /* hamburger menu section */
 .navbar .menu-items {
-    margin-top: 40px;
+    margin-top: 55px;
     width: auto;
     height: 650px;
     transform: translate(150%);
@@ -517,4 +517,19 @@
     width: 415px;
     height: auto;
     opacity: 0.75;
+}
+
+/* 아이폰 SE 또는 375px 미만의 화면 너비에서 스타일을 적용 */
+@media (max-width: 376px) {
+    .logo_header p{
+        width:124px;
+    }
+    .navbar .menu-items {
+        margin-left:-23px;
+    }
+    /* 언덕 위치 조정 */
+    /* .hill{
+        position: absolute;
+        bottom:0;
+    } */
 }
