@@ -15,8 +15,9 @@ urlpatterns = [
     path('a_search/',a_search,name='a_search'),
     path('edit_stamp/<str:event_name>/', edit_stamp, name='edit_stamp'),
     path('delete_stamp/<str:event_name>/', delete_stamp, name='delete_stamp'),
+    path('a_login/', a_login, name='a_login'),
     
-    # 
+    # introduce, makers
     path('introduce/', introduce, name='introduce'),
     path('makers/', makers, name='makers'),
     # path('edit_X_check/', edit_X_check, name='edit_X_check'),
