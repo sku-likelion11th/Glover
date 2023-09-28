@@ -18,7 +18,7 @@
             <div class="navbar jamsil-font">
                 <div class="container nav-container">
                     <div class="nav_logo">
-                        <a href={% url 'a_main' %}>
+                        <a href={% url 'a_login' %}>
                             <img src={% static "images/gloverlogo.png"%} alt="">
                         </a>
                     </div>
@@ -51,14 +51,19 @@
         </div>
         <!-- button section -->
         <div class="button-section text-center">
+            <form method="post">
+            {% csrf_token %}
+            {{ error_message }}
             <div class="admin_id">
-                <input type="id" id="admin_id" placeholder="아이디">
+                <input type="text" name="username" id="username" placeholder="아이디" required>
             </div>
             <div class="admin_pwd">
-                <input type="password" id="admin_pwd" placeholder="비밀번호">
+                <input type="password" name="password" id="password" placeholder="비밀번호" required>
             </div>
-            <button class="submit" type="button" onclick="location.href='../admin_main/a_main.html'">확인</button>
+            <button class="submit" type="submit">확인</button>
+            </form>
         </div>
+
         <!-- footer section -->
         <div class="footer-section jamsil-font">
             <div class="firstline d-flex justify-content-center ">
