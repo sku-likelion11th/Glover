@@ -59,16 +59,19 @@
             </div>
         </nav>
         <!-- header section -->
-        <div class="header_title">
-            <p class="header_name">글천절</p>
-            <p class="header_sub">: 글Lover</p>
-            <p class="header_add">글로벌 경영기술 대학 + 개천절 = 글천절</p>
-
+        <div class="header-section">
+            <div class="header-circle">
+            </div>
+            <div class="header_title">
+                <p class="header_name header-font">글천절</p>
+                <p class="header_sub header-font">: 글Lover</p>
+                <p class="header_sub2 header-font">글로벌경영기술대학 + 개천절 = 글천절</p>
+            </div>
             <div class="background_img">
+                <img src={% static "images/clover.png"%} alt="클로버이미지" class="clover">
                 <img src={% static "images/cloud.png"%} alt="구름2" class="cloud1">                
                 <img src={% static "images/cloud.png"%} alt="구름2" class="cloud2">
                 <img src={% static "images/cloud.png"%} alt="구름3" class="cloud3">
-                <!-- <img src="../../img/cloud.png" alt="구름4" class="cloud4"> -->
             </div>
         </div>
         <!-- durumari section -->
@@ -84,20 +87,20 @@
         </div>
 
         <!-- login section -->
-        <form class="login" id="login" method="post" action="{% url 'search' %}">
+        <form class="login" id="login" method="post">
             {% csrf_token %}
             <!-- select 요소와 아이콘을 감싸는 컨테이너 추가 -->
-            <select id="major_dropdown" name="major" class="custom-select">
+            <select class="custom-select">
                 <option value="0" disabled selected>학과</option>
-                <option value="관광개발학과">관광개발학과</option>
-                <option value="경영학과">경영학과</option>
-                <option value="글로벌물류학부">글로벌물류학부</option>
-                <option value="산업경영공학과">산업경영공학과</option>
+                <option value="1">관광개발학과</option>
+                <option value="2">경영학과</option>
+                <option value="3">글로벌물류학부</option>
+                <option value="4">산업경영공학과</option>
             </select>
             <div class="id">
-                <input type="text" name="student_id" placeholder="학번" required>
+                <input type="id" id="student_id" placeholder="학번">
             </div>
-            <input class="submit" type="submit" value="조회">
+            <button class="submit" type="button">조회</button>
         </form>
 
         <!-- first modal section  -->
@@ -154,7 +157,6 @@
                 <p class="modal_footer">글로벌경영기술대학 학생회</p>
             </div>
         </div>
-        
 
         <!-- footer section -->
         <div class="footer-section jamsil-font">

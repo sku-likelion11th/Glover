@@ -1,10 +1,9 @@
-
-const stampButtons = document.querySelectorAll(".stamp1");
+const stampButtons = document.querySelectorAll(".stampBtn");
 const modal = document.querySelector(".modal_cont");
 const modalName = document.querySelector(".modal_name p");
 const modalInfo = document.querySelector(".modal_detail p");
-const modalStart = document.querySelector(".modal_start p");
-const modalEnd = document.querySelector(".modal_finish p");
+const modalStart = document.querySelector(".modal_start");
+const modalEnd = document.querySelector(".modal_finish");
 const modalClose = document.querySelector(".bi-x");
 
 function formatDate(dateString) {
@@ -27,14 +26,11 @@ function init() {
             modalInfo.textContent = info;
             modalStart.textContent = startDate;
             modalEnd.textContent = endDate;
-
-            document.querySelector(".modal_cont").classList.remove("hidden");
             modal.classList.remove("hidden");
         });
     });
 
     modalClose.addEventListener("click", function () {
-        document.querySelector(".modal_cont").classList.add("hidden");
         modal.classList.add("hidden");
     });
 }

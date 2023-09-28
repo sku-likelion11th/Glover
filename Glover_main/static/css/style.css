@@ -54,11 +54,6 @@
     background-color: #b2ccff;
     overflow-x: hidden;
 
-    /* 배경 이미지, 클로버 필요 없으면 첫 번째의 url과 position 값 지워주면 됨 */  
-    background-size: auto;
-    background-image:url('../../img/clover.png');
-    background-position: 27px 56px;
-    background-repeat: no-repeat;
 }
 
 /* nav section */
@@ -101,6 +96,7 @@
     top: 13px;
     left: 15px;
     font-size: 1.2rem;
+    z-index:2;
 }
 .nav_logo img{
     width: 45px;
@@ -216,30 +212,40 @@
 
 
 /* header section */
+.header-circle{
+    background-color: rgba(255, 255, 255, 0.301);
+    width:100px;
+    height: 100px;
+    position:absolute;
+    margin-left: 160px;
+    border-radius: 100px;
+    box-shadow: 0px 0px 50px 30px rgba(255, 255, 255, 0.341);
+}
 .header_title{
     position:relative;
     text-align: center;
     z-index:1;
     margin-top:21px;
-
 }
 .header_name{
     font-size:50px;
     color:#ffffff;
     -webkit-text-stroke: 1px #000000;
-    margin-bottom:0px;
+    margin-bottom:-10px;
 }
 .header_sub{
     font-size:50px;
     color:#91AEE6;
     -webkit-text-stroke: 1px #000000;
-    margin-top:-10px;
+    margin-bottom:0px;
 }
-.header_add{
-    font-size:15px;
-    color:#5876B0;
-    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3); 
+.header_sub2{
+    color:#576B94;
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
+
+
 /* background img */
 .background_img {
     position: relative;
@@ -263,13 +269,18 @@
         -webkit-transform: translateX(700px) translateY(0px);
     }
 }
+.clover{
+    position: absolute;
+    margin-top: -220px;
+    margin-left: 10px;
+}
 .cloud1 {
-    z-index: -1;
+    z-index: 0;
     height: auto;
     position: absolute;
     width: 180px;
     right: -25px;
-    margin-top: -50px;
+    margin-top: -30px;
     -webkit-animation-name: cloud-ani;
     -webkit-animation-duration: 15s;
     -webkit-animation-timing-function: linear;
@@ -277,12 +288,12 @@
     -webkit-animation-iteration-count: infinite;
 }
 .cloud2 {
-    z-index: -1;
+    z-index: 0;
     height: auto;
     position: absolute;
     width: 180px;
     left: -25px;
-    top: 100px;
+    top: 120px;
     -webkit-animation-name: cloud-ani2;
     -webkit-animation-duration: 18s;
     -webkit-animation-timing-function: linear;
@@ -290,37 +301,24 @@
     -webkit-animation-iteration-count: infinite;
 }
 .cloud3 {
-    z-index: -1;
+    z-index: 0;
     height: auto;
     position: absolute;
     width: 180px;
     right: -25px;
     top: 280px;
     -webkit-animation-name: cloud-ani;
-    -webkit-animation-duration: 15s;
+    -webkit-animation-duration: 17s;
     -webkit-animation-timing-function: linear;
     -webkit-animation-fill-mode: forwards;
     -webkit-animation-iteration-count: infinite;
 }
-/* .cloud4 {
-    z-index: -1;
-    height: auto;
-    position: absolute;
-    width: 180px;
-    left: -25px;
-    top: 500px;
-    -webkit-animation-name: cloud-ani2;
-    -webkit-animation-duration: 18s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-fill-mode: forwards;
-    -webkit-animation-iteration-count: infinite;
-} */
 /* durumari section */
 .durumari{
     position:relative;
     display:block;
     margin:auto;
-    margin-top:30px;
+    margin-top:20px;
     z-index:1;
 }
 .explan{
@@ -333,7 +331,7 @@
 
 /* login section  */
 .login{
-    margin-top:-90px;
+    margin-top:-95px;
     display:flex;
     flex-direction:column;
     align-items:center;
