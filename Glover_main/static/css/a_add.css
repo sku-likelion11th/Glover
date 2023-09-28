@@ -201,6 +201,16 @@
 
 
 /* header section */
+.header-circle{
+    background-color: rgba(255, 255, 255, 0.301);
+    width:100px;
+    height: 100px;
+    position:absolute;
+    z-index:-1;
+    margin-left: 160px;
+    border-radius: 100px;
+    box-shadow: 0px 0px 50px 30px rgba(255, 255, 255, 0.341);
+}
 .header_title{
     position:relative;
     text-align: center;

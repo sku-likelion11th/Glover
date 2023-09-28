@@ -36,12 +36,12 @@
                     <div class="menu-items">
                         <div class="menu_durumari d-flex flex-column text-center">
                             <div class="menu_logo text-center">
-                                <img src={% static "images/gloverlogo.png"%} alt="">
+                                <img src={% static "images/gloverlogo.png" %}alt="">
                             </div>
                             <p class="tmoney font-bold">청천(靑天)</p>
                             <p class="tmoney">글로벌경영기술대학</p>
                             <div class="menu_line"></div>
-                            <li><a href={% url 'a_events' %}><p class="shilla">이벤트 관리</p><br /></a></li>
+                            <li><a href={% url 'a_manage' %}><p class="shilla">이벤트 관리</p><br /></a></li>
                             <li><a href={% url 'a_search' %}><p class="shilla">이벤트 참여자 조회</p></a></li>
                             <div class="menu_line"></div>
                             <div class="menu_footer">
@@ -74,14 +74,13 @@
                 이벤트 참여자 조회
             </div>
             <div class="background_img">
-                <img src={% static "images/cloud.png"%} alt="구름2" class="cloud1">                
+                <img src={% static "images/cloud.png"%} alt="구름1" class="cloud1">                
                 <img src={% static "images/cloud.png"%} alt="구름2" class="cloud2">
                 <img src={% static "images/cloud.png"%} alt="구름3" class="cloud3">
-                <!-- <img src="../../img/cloud.png" alt="구름4" class="cloud4"> -->
             </div>
         </div>
         <!--button section-->
-            <div class="button-section jamsil-font">
+           <div class="button-section jamsil-font">
                 <form class="a_search" id="a_search" method="post" action="{% url 'a_search' %}">
                     {% csrf_token %}
                     <div class="dropdown-e">
@@ -116,32 +115,32 @@
             </div>
         <!--table section-->
         <form class='check' id='check' method="POST" action="{% url 'a_search' %}">
-        {% csrf_token %}
-        <div class="table-section LotteMart-font">
-            <table class="table" id="dynamicTable">
-                <thead>
-                  <tr>
-                    <th>학과</th>
-                    <th>학번</th>
-                    <th>이름</th>
-                    <th>선택</th>
-                  </tr>
-                </thead>
-                {% for student in stamp_collections %}
-                <tbody class="table-body">
-                  <td>{{ student.student.major }}</td>
-                  <td>{{ student.student_id }}</td>
-                  <td>{{ student.student.full_name }}</td>
-                  <td><input type="checkbox" name="event_check" id='cb_{{ student.id }}' value="{{ student.id }}" {% if student.is_collected %} checked {% endif %}>
-                      <input type="hidden" name="hiddenInput" id='hiddenInput_{{ student.id }}' value="{{ student.is_collected }}">
-                      <input type="hidden" name="hiddenInput2" id='hiddenInput2_{{ student.id }}' value="{{ student.id }}"></td>
-                </tbody>
-                {% endfor %}
-              </table>
-        </div>
+            {% csrf_token %}
+            <div class="table-section LotteMart-font">
+                <table class="table" id="dynamicTable">
+                    <thead>
+                      <tr>
+                        <th>학과</th>
+                        <th>학번</th>
+                        <th>이름</th>
+                        <th>선택</th>
+                      </tr>
+                    </thead>
+                    {% for student in stamp_collections %}
+                    <tbody class="table-body">
+                      <td>{{ student.student.major }}</td>
+                      <td>{{ student.student_id }}</td>
+                      <td>{{ student.student.full_name }}</td>
+                      <td><input type="checkbox" name="event_check" id='cb_{{ student.id }}' value="{{ student.id }}" {% if student.is_collected %} checked {% endif %}>
+                          <input type="hidden" name="hiddenInput" id='hiddenInput_{{ student.id }}' value="{{ student.is_collected }}">
+                          <input type="hidden" name="hiddenInput2" id='hiddenInput2_{{ student.id }}' value="{{ student.id }}"></td>
+                    </tbody>
+                    {% endfor %}
+                  </table>
+            </div>
         </form>
         <div class="check jamsil-font">
-            <button class="check-button" type="submit" id="check-submit">
+            <button class="check-button" onclick="location.href='../admin_events/a_events.html'">
                 확인
             </button>
         </div>

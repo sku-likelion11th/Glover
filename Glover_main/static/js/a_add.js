@@ -1,63 +1,63 @@
-// // // 버튼 요소 가져오기
-// var submitButton = document.querySelector(".submit");
-// var deleteButton = document.querySelector('.del');
-// var hamburgerCheckbox = document.querySelector(".checkbox");
+// 버튼 요소 가져오기
+var submitButton = document.querySelector(".submit");
+var deleteButton = document.querySelector('.del');
+var hamburgerCheckbox = document.querySelector(".checkbox");
 
 
-// // 버튼 클릭 이벤트 핸들러 등록
-// submitButton.addEventListener("click", function(event) {
-//     event.preventDefault(); // 버튼의 기본 동작 방지
+// 버튼 클릭 이벤트 핸들러 등록
+submitButton.addEventListener("click", function(event) {
+    event.preventDefault(); // 버튼의 기본 동작 방지
 
-//     // 여기에서 POST 요청을 보내고 백엔드에서 응답을 받아 모달에 표시합니다.
+    // 여기에서 POST 요청을 보내고 백엔드에서 응답을 받아 모달에 표시합니다.
 
-//     // 모달 창 열기
-//     document.getElementById("fir_modal").style.display = "block";
+    // 모달 창 열기
+    document.getElementById("fir_modal").style.display = "block";
 
-//     // 모달-cont에 블러 효과를 추가
-//     var modalCont = document.querySelector(".modal-cont");
-//     modalCont.classList.add('blur-effect');
+    // 모달-cont에 블러 효과를 추가
+    var modalCont = document.querySelector(".modal-cont");
+    modalCont.classList.add('blur-effect');
 
-//     // 햄버거 메뉴가 열려 있으면 버튼 비활성화
-//     if (hamburgerCheckbox.checked) {
-//         submitButton.disabled = true;
-//         deleteButton.disabled = true;
-//     }
-// });
+    // 햄버거 메뉴가 열려 있으면 버튼 비활성화
+    if (hamburgerCheckbox.checked) {
+        submitButton.disabled = true;
+        deleteButton.disabled = true;
+    }
+});
 
-// // 모달 닫기 버튼 클릭 이벤트 핸들러 등록
-// var closeModalButton = document.querySelector(".bi-x");
-// closeModalButton.addEventListener("click", function() {
-//     // 모달 창 닫기
-//     document.getElementById("fir_modal").style.display = "none";
+// 모달 닫기 버튼 클릭 이벤트 핸들러 등록
+var closeModalButton = document.querySelector(".bi-x");
+closeModalButton.addEventListener("click", function() {
+    // 모달 창 닫기
+    document.getElementById("fir_modal").style.display = "none";
 
-//     // modal-cont에서 블러 효과 제거
-//     var modalCont = document.querySelector(".modal-cont");
-//     modalCont.classList.remove('blur-effect');
+    // modal-cont에서 블러 효과 제거
+    var modalCont = document.querySelector(".modal-cont");
+    modalCont.classList.remove('blur-effect');
 
-//     // 모달이 닫힐 때 버튼 활성화
-//     submitButton.disabled = false;
-//     deleteButton.disabled = false;
-// });
+    // 모달이 닫힐 때 버튼 활성화
+    submitButton.disabled = false;
+    deleteButton.disabled = false;
+});
 
-// // 햄버거 메뉴 체크박스 상태 변경 이벤트 핸들러 등록
-// hamburgerCheckbox.addEventListener("change", function() {
-//     // 체크박스 상태에 따라 블러 효과를 추가 또는 제거
-//     if (hamburgerCheckbox.checked) {
-//         var modalCont = document.querySelector(".modal-cont");
-//         modalCont.classList.add('blur-effect');
+// 햄버거 메뉴 체크박스 상태 변경 이벤트 핸들러 등록
+hamburgerCheckbox.addEventListener("change", function() {
+    // 체크박스 상태에 따라 블러 효과를 추가 또는 제거
+    if (hamburgerCheckbox.checked) {
+        var modalCont = document.querySelector(".modal-cont");
+        modalCont.classList.add('blur-effect');
 
-//         // 버튼 비활성화
-//         submitButton.disabled = true;
-//         deleteButton.disabled = true;
-//     } else {
-//         var modalCont = document.querySelector(".modal-cont");
-//         modalCont.classList.remove('blur-effect');
+        // 버튼 비활성화
+        submitButton.disabled = true;
+        deleteButton.disabled = true;
+    } else {
+        var modalCont = document.querySelector(".modal-cont");
+        modalCont.classList.remove('blur-effect');
 
-//         // 버튼 활성화
-//         submitButton.disabled = false;
-//         deleteButton.disabled = false;
-//     }
-// });
+        // 버튼 활성화
+        submitButton.disabled = false;
+        deleteButton.disabled = false;
+    }
+});
 
 // form에서 이미지 업로드시 미리보기
 function readURL(input, previewId) {
