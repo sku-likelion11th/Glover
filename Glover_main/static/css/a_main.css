@@ -155,7 +155,7 @@
 .menu_durumari {
     width: 395px;
     height: 800px;
-    background-image: url(../../img/durumari2.png);
+    background-image: url(../../static/images/durumari2.png);
     background-size: 395px 650px;
     z-index: 1000;
     letter-spacing: normal;

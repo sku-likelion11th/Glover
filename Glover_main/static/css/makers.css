@@ -154,7 +154,7 @@
 .menu_durumari {
     width: 395px;
     height: 800px;
-    background-image: url(../../img/durumari2.png);
+    background-image: url(../../static/images/durumari2.png);
     background-size: 395px 650px;
     z-index: 1000;
     letter-spacing: normal;
@@ -439,6 +439,10 @@
 .team {
     margin: 70px 0 20px 0;
 }
+.team a {
+    text-decoration: none;    
+    color: #000000;
+}
 .makers_logo {
     z-index: 10;
 }
@@ -459,6 +463,19 @@
 .box_tool{
     z-index: 10;
 }
+.m_box1 {
+    background-color: #fff;
+    border: 1px solid #2A4884;
+    border-radius: 20px;
+    height: 170px;
+    width: 130px;
+    font-size: 10px;
+    text-align: center;
+    flex-wrap: wrap;
+    margin: 10px;
+    font-weight: 900;
+    padding: 10px 0;
+}
 .m_box {
     background-color: #fff;
     border: 1px solid #2A4884;
@@ -471,6 +488,7 @@
     margin: 10px;
     font-weight: 900;
 }
+
 .m_mimo img {
     padding-top: 10px;
     width: 80px;
