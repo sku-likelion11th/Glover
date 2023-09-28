@@ -215,7 +215,7 @@
     position:relative;
     text-align: center;
     z-index:1;
-    margin-top:21px;
+    margin-top:50px;
 }
 .header_name{
     font-size:40px;
@@ -257,6 +257,12 @@
     0% {
         -webkit-transform: translateX(700px) translateY(0px);
     }
+}
+.clover{
+    position: absolute;
+    margin-top: -200px;
+    margin-left: -180px;
+    z-index: -1;
 }
 .cloud1 {
     z-index: -1;
