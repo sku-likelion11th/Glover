@@ -335,6 +335,7 @@
 
 /* button section */
 .button-section {
+    position: relative;
     margin-top: -120px;
     margin-bottom: 30px;
     display:flex;
@@ -351,7 +352,6 @@
     background-color: white;
     text-align:center;
     box-shadow: 3px 3px 5px  rgba(0, 0, 0, 0.2);
-    z-index:2;
 }
 .admin_id input{
     width:140px;
@@ -376,7 +376,6 @@
     background-color: white;
     text-align:center;
     box-shadow: 3px 3px 5px  rgba(0, 0, 0, 0.2);
-    z-index:2;
 }
 .admin_pwd input{
     width:140px;
@@ -403,7 +402,6 @@
     font-size:13px;
     font-weight: bold;
     box-shadow: 3px 3px 5px  rgba(0, 0, 0, 0.2);
-    z-index:2;
 }
 
 
