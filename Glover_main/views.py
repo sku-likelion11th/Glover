@@ -227,7 +227,7 @@ def a_login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-
+        
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
@@ -236,6 +236,9 @@ def a_login(request):
         else:
             # 로그인 실패 처리
             return render(request, 'admin_page/a_login.html', {'error_message': '로그인에 실패했습니다.'})
+        
+    if request.user.is_authenticated:
+        return redirect('a_main')
     
     return render(request, 'admin_page/a_login.html')
 
