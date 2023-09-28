@@ -37,7 +37,7 @@ def main(request, student_id=None):
 # ?
 def search(request):
     student_id = request.GET.get('student_id', '')
-     # 데이터베이스에서 학번을 사용하여 학생 객체를 가져옵니다.
+    # 데이터베이스에서 학번을 사용하여 학생 객체를 가져옵니다.
     student_obj = get_object_or_404(student, student_id=student_id)
     # 학생 객체에서 이름을 추출합니다.
     full_name = student_obj.full_name
@@ -114,7 +114,7 @@ def a_add(request):
                 image = image,
             )
             mystamp.save()
-            return redirect('stamp_list')
+            return redirect('a_events')
         else:
             # 필요한 모든 데이터가 제출되지 않은 경우에 대한 처리
             error_message = "모든 필드를 입력해야 합니다."
@@ -196,22 +196,15 @@ def edit_stamp(request, event_name):
                         'event_end': request.POST.get('event_end')}
     
         # 이미지 업데이트 처리
-        before_image = request.FILES.get('before_image')
-        if before_image:
-            # FileSystemStorage사용하여 이미지 저장
-            fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'before_images'))
-            filename = fs.save(before_image.name, before_image)
-            updated_data['before_image'] = filename
-        
-        after_image = request.FILES.get('after_image')
-        if after_image:
+        image = request.FILES.get('after_image')
+        if image:
             fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'after_images'))
-            filename = fs.save(after_image.name, after_image)
+            filename = fs.save(image.name, image)
             updated_data['after_image'] = filename
             
         # DB에 직접 업뎃
         stamp.objects.filter(event_name=event_name).update(**updated_data)
-        return redirect('stamp_list')  # 수정 후 도장 목록으로 리디렉션
+        return redirect('a_events')  # 수정 후 도장 목록으로 리디렉션
         
     return render(request, 'admin_page/edit_stamp.html', {'stamp_instance': stamp_instance})
 

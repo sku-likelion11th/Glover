@@ -112,6 +112,8 @@
             <div class="modal-bg">
                 <div class="modal-cont hidden blur-effect">
                     <div class="modal-head">
+                        <form method='post' class="tmoney-font" enctype="multipart/form-data" action="{% url 'edit_stamp' %}">
+                        {% csrf_token %}
                         <input class="header-font" type="text" placeholder="사업명" autofocus>
                         <button class="bi-x">
                             <svg width="15" height="15" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -142,8 +144,8 @@
                         <div class="modalBtn d-flex justify-content-around">
                             <input id="saveBtn" class="submit" type="submit" value="저장">
                             <input id="delBtn" class="del" type="button" value="삭제">
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

@@ -75,7 +75,9 @@
             <div class="modal-bg">
                 <div class="modal-cont">
                     <div class="modal-head">
-                        <input class="header-font" type="text" placeholder="사업명" autofocus>
+                        <form method='post' class="tmoney-font" enctype="multipart/form-data" action="{% url 'a_add' %}">
+                            {% csrf_token %}
+                        <input class="header-font" type="text" name="event_name" id="id_event_name" placeholder="사업명" autofocus>
                         <button class="bi-x">
                             <svg width="15" height="15" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.8334 1.3415L10.6584 0.166504L6.00008 4.82484L1.34175 0.166504L0.166748 1.3415L4.82508 5.99984L0.166748 10.6582L1.34175 11.8332L6.00008 7.17484L10.6584 11.8332L11.8334 10.6582L7.17508 5.99984L11.8334 1.3415Z" fill="#758DBB"/>
@@ -84,8 +86,6 @@
                     </div>
                     <div class="modal-bar"></div>
                     <!-- from section  -->
-                    <form method='post' class="tmoney-font" enctype="multipart/form-data">
-                        {% csrf_token %}
                         <textarea class="detail" type="text" name="event_info" id="id_event_info" placeholder="설명"></textarea>
                         <br>
                         <!-- date -->
@@ -105,8 +105,8 @@
                         <div class="button">
                             <button type="submit" class="submit" id="submit">저장</button>
                             <button class="del" type="button">삭제</button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
 
