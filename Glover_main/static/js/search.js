@@ -1,7 +1,6 @@
-
 const stampButtons = document.querySelectorAll(".stamp1");
 const modal = document.querySelector(".modal_cont");
-const modalName = document.querySelector(".modal_name p");
+const modalName = document.querySelector(".name p");
 const modalInfo = document.querySelector(".modal_detail p");
 const modalStart = document.querySelector(".modal_start p");
 const modalEnd = document.querySelector(".modal_finish p");
@@ -22,7 +21,7 @@ function init() {
             const info = button.getAttribute("data-info");
             const startDate = formatDate(button.getAttribute("data-start"));
             const endDate = formatDate(button.getAttribute("data-end"));
-
+            
             modalName.textContent = name;
             modalInfo.textContent = info;
             modalStart.textContent = startDate;
@@ -39,4 +38,5 @@ function init() {
     });
 }
 
+console.log(stampButtons)
 init();
