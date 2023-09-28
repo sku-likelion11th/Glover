@@ -75,8 +75,6 @@
             <div class="modal-bg">
                 <div class="modal-cont">
                     <div class="modal-head">
-                        <form method='post' class="tmoney-font" enctype="multipart/form-data" action="{% url 'a_add' %}">
-                            {% csrf_token %}
                         <input class="header-font" type="text" name="event_name" id="id_event_name" placeholder="사업명" autofocus>
                         <button class="bi-x">
                             <svg width="15" height="15" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -86,6 +84,8 @@
                     </div>
                     <div class="modal-bar"></div>
                     <!-- from section  -->
+                    <form method='post' class="tmoney-font" enctype="multipart/form-data" action="{% url 'a_add' %}">
+                        {% csrf_token %}
                         <textarea class="detail" type="text" name="event_info" id="id_event_info" placeholder="설명"></textarea>
                         <br>
                         <!-- date -->
