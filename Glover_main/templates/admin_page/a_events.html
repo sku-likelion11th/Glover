@@ -89,7 +89,7 @@
             <div class="stamp_tool">
                 <div class="stamp">
                     {% for stamp in stamps %}
-                    <button class="stampBtn">
+                    <button class="stampBtn" data-name="{{ stamp.event_name }}" data-info="{{ stamp.event_info }}" data-start="{{ stamp.event_start }}" data-end="{{ stamp.event_end }}">
                         <img class="empty-stamp" src={{ stamp.image.url }} alt="빈 스탬프 이미지" width="100" height="100">                            
                     </button>
                     {% endfor %}
@@ -109,14 +109,15 @@
                 </div>
                 <div class="modal_line"></div>
                 <!-- from section  -->
-                <form class="tmoney-font">
+                <form class="tmoney-font" method="post">
+                    {% csrf_token %}
                     <textarea class="modal_detail" type="text" placeholder="설명"></textarea>
                     <br>
                     <!-- date -->
                     <div class="modal_line"></div>
                     <p class="modal_term header-font">기간</p>
                     <div class="modal_date">
-                        <input type="date">~<input type="date">
+                        <input class="modal_start" type="date">~<input class="modal_finish"type="date">
                     </div>
                     <div class="modal_line text-center"></div>
                     <!-- file upload -->
@@ -128,7 +129,7 @@
                         </div>
                     </div>
                     <!-- button -->
-                    <div class="modalBtn d-flex justify-content-around">
+                    <div class="modalBtn d-flex justify-content-around">             
                         <input id="saveBtn" class="submit" type="submit" value="저장">
                         <input id="delBtn" class="del" type="button" value="삭제">
                     </div>
