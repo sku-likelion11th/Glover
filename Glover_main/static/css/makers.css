@@ -388,7 +388,6 @@
     margin: 30px 30px 30px -10px;
     width: 119px;
     z-index: 10;
-
 }
 .logo_header{
     font-size: 15px;
@@ -434,7 +433,10 @@
     flex-wrap: wrap;
 }
 .likelion-section {
-    flex-wrap: wrap;
+    grid-gap: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
 }
 .team {
     margin: 70px 0 20px 0;
@@ -463,18 +465,10 @@
 .box_tool{
     z-index: 10;
 }
-.m_box1 {
-    background-color: #fff;
-    border: 1px solid #2A4884;
-    border-radius: 20px;
-    height: 170px;
-    width: 130px;
-    font-size: 10px;
-    text-align: center;
-    flex-wrap: wrap;
-    margin: 10px;
-    font-weight: 900;
-    padding: 10px 0;
+
+.m_mimo1 img {
+    width: 60px;
+    height: 60px;
 }
 .m_box {
     background-color: #fff;
