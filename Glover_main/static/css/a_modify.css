@@ -22,12 +22,6 @@
     font-weight: 700;
     font-style: normal;
 }
-@font-face {
-    font-family: 'TmoneyRoundWindExtraBold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 .header-font {
     font-family: 'yg-jalnan', sans-serif;
 }
@@ -40,20 +34,19 @@
 .jamsil-font{
     font-family:'TheJamsil5Bold', sans-serif;
 }
-.tmoney-font{
-    font-family: 'TmoneyRoundWindExtraBold', sans-serif;
-}
-
-/* display-container */
 .display-container {
+    box-shadow: 0 0 15px 0 hsla(0, 0%, 100%, .75);
     max-width: 415px;   
     margin-left: auto;
     margin-right: auto;
     min-height: 100vh;
-    z-index: -10;
+    z-index: 0;
     background-color: #b2ccff;
     overflow-x: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    background-size: auto;
+    background-image:url('../../img/clover.png');
+    background-position: 27px 56px;
+    background-repeat: no-repeat;
 }
 
 
@@ -206,31 +199,42 @@
   display: none;
 }
 
+
 /* header section */
+.header-circle{
+    background-color: rgba(255, 255, 255, 0.301);
+    width:100px;
+    height: 100px;
+    position:absolute;
+    z-index:-1;
+    margin-left: 160px;
+    border-radius: 100px;
+    box-shadow: 0px 0px 50px 30px rgba(255, 255, 255, 0.341);
+}
 .header_title{
     position:relative;
     text-align: center;
     z-index:1;
-    margin-top:21px;
+    margin-top:50px;
 }
 .header_name{
-    font-size:50px;
+    font-size:40px;
     color:#ffffff;
     -webkit-text-stroke: 1px #000000;
-    margin-bottom: 0px;
+    margin-bottom:0px;
 }
 .header_sub{
     font-size:20px;
-    color:#ffffff;
+    color:#fff;
     -webkit-text-stroke: 1px #000000;
+    margin-top:-10px;
 }
-.header_sub2{
+.header_add{
     font-size:20px;
     color:#91AEE6;
     -webkit-text-stroke: 1px #000000;
-    margin-top:-20px;
-}
 
+}
 /* background img */
 .background_img {
     position: relative;
@@ -254,8 +258,14 @@
         -webkit-transform: translateX(700px) translateY(0px);
     }
 }
+.clover{
+    position: absolute;
+    margin-top: -200px;
+    margin-left: -180px;
+    z-index: -1;
+}
 .cloud1 {
-    z-index: 0;
+    z-index: -1;
     height: auto;
     position: absolute;
     width: 180px;
@@ -268,7 +278,7 @@
     -webkit-animation-iteration-count: infinite;
 }
 .cloud2 {
-    z-index: 0;
+    z-index: -1;
     height: auto;
     position: absolute;
     width: 180px;
@@ -281,249 +291,233 @@
     -webkit-animation-iteration-count: infinite;
 }
 .cloud3 {
-    z-index: 0;
+    z-index: -1;
     height: auto;
     position: absolute;
     width: 180px;
     right: -25px;
     top: 280px;
     -webkit-animation-name: cloud-ani;
-    -webkit-animation-duration: 16.5s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-fill-mode: forwards;
-    -webkit-animation-iteration-count: infinite;
-}
-.cloud4 {
-    z-index: 0;
-    height: auto;
-    position: absolute;
-    width: 180px;
-    left: -25px;
-    top: 500px;
-    -webkit-animation-name: cloud-ani2;
-    -webkit-animation-duration: 17s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-fill-mode: forwards;
-    -webkit-animation-iteration-count: infinite;
-}
-.cloud5 {
-    z-index: 0;
-    height: auto;
-    position: absolute;
-    width: 180px;
-    right: -25px;
-    top: 700px;
-    -webkit-animation-name: cloud-ani;
-    -webkit-animation-duration: 18s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-fill-mode: forwards;
-    -webkit-animation-iteration-count: infinite;
-}
-.cloud6 {
-    z-index: 0;
-    height: auto;
-    position: absolute;
-    width: 180px;
-    left: -25px;
-    top: 900px;
-    -webkit-animation-name: cloud-ani2;
     -webkit-animation-duration: 15s;
     -webkit-animation-timing-function: linear;
     -webkit-animation-fill-mode: forwards;
     -webkit-animation-iteration-count: infinite;
 }
-.cloud7 {
-    z-index: 0;
-    height: auto;
-    position: absolute;
-    width: 180px;
-    right: -25px;
-    top: 1100px;
-    -webkit-animation-name: cloud-ani;
-    -webkit-animation-duration: 16s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-fill-mode: forwards;
-    -webkit-animation-iteration-count: infinite;
+/*modal section*/
+#modal{
+    z-index:4;
+    position:relative;
 }
-.cloud8 {
-    z-index: 0;
-    height: auto;
-    position: absolute;
-    width: 180px;
-    left: -25px;
-    top: 1300px;
-    -webkit-animation-name: cloud-ani2;
-    -webkit-animation-duration: 18s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-fill-mode: forwards;
-    -webkit-animation-iteration-count: infinite;
+#modal.modal-bg {
+	background: rgba(0,0,0,0);
+	animation: fadeIn 0.5s cubic-bezier(0.165, 0.85, 0.44, 1) forwards;
 }
-.cloud9 {
-    z-index: 0;
-    height: auto;
-    position: absolute;
-    width: 180px;
-    right: -25px;
-    top: 1500px;
-    -webkit-animation-name: cloud-ani;
-    -webkit-animation-duration: 17s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-fill-mode: forwards;
-    -webkit-animation-iteration-count: infinite;
+.modal-bg .modal-cont {
+	opacity: 0;
+	animation: scaleUp 0.5s cubic-bezier(0.165, 0.85, 0.44, 1) forwards;
 }
+.modal-cont{
+    width:310px;
+    height:550px;
+    display:flex;
+    flex-direction:column;
+    background-color: white;
+    border-radius: 30px;
+    border: 4px solid;
+    border-color:#91AEE6;
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 0.3s;
 
-
-
-/* logo section */
-.logo_section {
+    margin-left:auto;
+    margin-right: auto;
+    padding-left:20px;
+    padding-right:20px;
+    padding-top:20px;
 }
-.logo_glover {
-    margin: 30px -10px 30px 30px;
-    z-index: 10;
+.modal-head{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
-.handshake {
-    margin-top: 60px;
+.modal-head input {
+    border: none;
+    background: none;
+    color: #758DBB;
+    resize: none;
+    outline:none;  
 }
-.logo_likelion {
-    margin: 30px 30px 30px -10px;
-    width: 119px;
-    z-index: 10;
+.modal-head input::placeholder {
+    color: #758DBB;
 }
-.logo_header{
-    font-size: 15px;
-    font-weight: 700;
+.bi-x{
+    border: 0;
+    background-color: transparent;
+    height: 10px;
+    z-index:10;
 }
-.logo_header p {
-    margin-bottom: 0;
+.name{
+    color:#758DBB;
+    margin-top:3px;
 }
-.logo_header .color {
-    color: #2A4884;
-}
-.glover_icon img {
-    width: 80px;
-    height: auto;
-    border-radius: 20px;
-}
-.likelion_icon img {
-    width: 80px;
-    height: auto;
-    margin-bottom: 9px;
-}
-.who_made {
-    margin-bottom: 50px;
-}
-.who_made p{
-    font-size: 11px;
-    z-index: 10;
-    font-weight: 500;
-    margin-bottom: 0px;
-    font-weight: 700;
-}
-.info .color {
-    /* 색상변경  */
-    color: #2A4884;
-}
-
-
-/* makers section */
-.makers {
-    margin-bottom: 100px;
-}
-.glover-section {
-    flex-wrap: wrap;
-}
-.likelion-section {
-    grid-gap: 20px;
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 1fr 1fr;
-}
-.team {
-    margin: 70px 0 20px 0;
-}
-.team a {
-    text-decoration: none;    
-    color: #000000;
-}
-.makers_logo {
-    z-index: 10;
-}
-.makers_logo img {
-    width: 4rem;
-    margin-bottom: 10px;
-    border-radius: 20px;
-}
-.team p {
-    font-weight: 700;
-    font-size: 0.75rem;
-    z-index: 10;
-    margin-bottom: 0px;
-}
-.team .color {
-    color: #2A4884;
-}
-.box_tool{
-    z-index: 10;
-}
-
-.m_mimo1 img {
-    width: 60px;
-    height: 60px;
-}
-.m_box {
-    background-color: #fff;
-    border: 1px solid #2A4884;
-    border-radius: 20px;
-    height: 170px;
-    width: 130px;
-    font-size: 10px;
-    text-align: center;
-    flex-wrap: wrap;
-    margin: 10px;
-    font-weight: 900;
-}
-
-.m_mimo img {
-    padding-top: 10px;
-    width: 80px;
-}
-.m_icon img {
-    width: 15px;
+.modal-bar{
+    width: 260px;
+    border: 2px solid #91AEE6;
     border-radius: 5px;
-    margin: 6px 2px 0 0;
+    margin-top: 5px;
 }
-.m_icon2 img {
-    width: 15px;
-    border-radius: 5px;
-    margin: 8px 2px 0 0;
+
+/* form section */
+/* from section > textarea */
+.detail{
+    margin-top: 10px;
+    background-color: #e7eeff;
+    width: 250px;
+    height: 150px;
+    border-radius: 20px;
+    border:none;
+    padding-top:10px;
+    padding-left:10px;
+    padding-right:10px;
+    resize: none;
+    outline:none;   
+    color: #858585;
 }
-.m_name {
-    padding-top: 4px;
+.detail::placeholder {
+    color: #858585;
     font-size: 14px;
+    font-weight: 500;
 }
-.m_role {
-    font-size: 13px;
+.term{
+    color:#758DBB;
+    margin-bottom:5px;
 }
-.hill {
-    padding-top: 70px;
+/* form section > date */
+.date{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    color:#91AEE6;
 }
-.hill img {
-    width: 415px;
-    height: auto;
-    opacity: 0.75;
+input[type="date"] {
+    width:100px;
+    height:30px;
+    font-size:12px;
+    color:#91AEE6;
+    background-color: #E5EFFE;
+    border:none;
+    border-radius: 22px;
+    text-align: center;
+    outline:none;
+}
+.modal-bar2 {
+    width: 260px;
+    border: 2px solid #91AEE6;
+    border-radius: 5px;
+    margin: 10px 0;
+    
 }
 
-/* 아이폰 SE 또는 375px 미만의 화면 너비에서 스타일을 적용 */
-@media (max-width: 376px) {
-    .logo_header p{
-        width:124px;
-    }
-    .navbar .menu-items {
-        margin-left:-23px;
-    }
-    /* 언덕 위치 조정 */
-    /* .hill{
-        position: absolute;
-        bottom:0;
-    } */
+/* form section > file */
+.img{
+    margin-top: 20px;
+}
+
+.file-box{
+    text-align: center;
+    color:#758DBB;
+}
+/* 파일 업로드 기존 디자인 없애기 */
+.file-box input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+.file-box p{
+    margin-bottom:5px;
+}
+/* 파일(이미지) 미리보기 박스 */
+.img-box{
+    width:98px;
+    height:98px;
+    border:2px solid #91AEE6;
+    border-radius: 5px;
+    cursor:pointer;
+}
+
+/* form > button */
+.button{
+    text-align: center;
+    margin-top: 30px;
+}
+.submit{
+    width:82px;
+    height: 34px;
+    border:1px solid #91AEE6;
+    border-radius: 5px;
+    background-color: #91AEE6;
+    color:#ffffff;
+    margin-right:40px;
+}
+.del{
+    width:82px;
+    height:34px;
+    border:2px solid #91AEE6;
+    border-radius: 5px;
+    background-color:#ffffff;
+    color:#91AEE6;
+}
+
+/* 블러 효과 설정, js에서 값을 넣어줌 */
+.blur-effect {
+    filter: blur(5px); 
+}
+
+/* footer section */
+.footer-section {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.footer-section p{
+    z-index: 2;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    color: rgba(97, 97, 97, 0.5);
+}
+.footer-section svg {
+    z-index: 2;
+    color: rgba(97,97, 97, 0.5);
+    margin: 3px 2px;
+}
+
+@keyframes fadeIn {
+	0% {background: rgba(0,0,0,0)}
+	100% {background: rgba(0,0,0,0.7)}
+}
+@keyframes fadeOut {
+	0% {background: rgba(0,0,0,0.7)}
+	100% {background: rgba(0,0,0,0)}
+}
+@keyframes scaleUp {
+	0% {transform: scale(0.5) translatey(100px); opacity:0}
+	100% {transform: scale(1) translatey(0px); opacity:1}
+}
+@keyframes scaleDown {
+	0% {transform: scale(1) translatey(0px); opacity:1}
+	100% {transform: scale(0.5) translatey(1000px); opacity:0}
+}
+@keyframes quickScaleDown {
+	0% {transform: scale(1);}
+	99.9% {transform: scale(1); }
+	100% {transform: scale(0); }
+}
+
+/* 블러 효과 */
+.blur-effect {
+    filter: blur(3px); /* 흐림 효과 크기 지정 (px 단위) */
 }

@@ -471,52 +471,6 @@ input[type="date"] {
     color:#91AEE6;
 }
 
-/* second modal */
-.sec_modal{
-    display:none;
-    position: fixed; /* 또는 position: absolute; */
-    top: 45%; /* 화면 세로 중앙에 위치 */
-    left: 50%; /* 화면 가로 중앙에 위치 */
-    transform: translate(-50%, -50%); /* 중앙 정렬 */
-    z-index: 4; /* 첫 번째 모달보다 위에 표시 */
-}
-.sec_modal_content{
-    width: 310px !important;
-    height: 160px; /* 모달 창의 높이 설정 */
-    border-radius: 25px !important;
-    border:4px solid #91AEE6;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-.sec_header{
-    background-color: #E5EFFE;
-    font-size:20px;
-    color:#758DBB;
-    border-radius: 22px;
-    
-    padding:5px 20px;
-}
-.yes button{
-    width:82px;
-    height: 34px;
-    border:1px solid #91AEE6;
-    border-radius: 5px;
-    background-color: #91AEE6;
-    color:#ffffff;
-    margin-right:30px;
-}
-.no button{
-    width:82px;
-    height:34px;
-    border:2px solid #91AEE6;
-    border-radius: 5px;
-    background-color:#ffffff;
-    color:#91AEE6;
-}
 
 /* 블러 효과 설정, js에서 값을 넣어줌 */
 .blur-effect {
