@@ -471,7 +471,6 @@ input[type="date"] {
     color:#91AEE6;
 }
 
-
 /* 블러 효과 설정, js에서 값을 넣어줌 */
 .blur-effect {
     filter: blur(5px); 
