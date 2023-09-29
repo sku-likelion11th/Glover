@@ -1,4 +1,4 @@
-// // 버튼 요소 가져오기
+// 버튼 요소 가져오기
 // var submitButton = document.querySelector(".submit");
 // var deleteButton = document.querySelector('.del');
 // var hamburgerCheckbox = document.querySelector(".checkbox");
@@ -81,7 +81,6 @@ imgBoxes.forEach(function(imgBox) {
         fileInput.click();
     });
 });
-
 
 
 // // 폼 내부 버튼에 따른 모달창 제공

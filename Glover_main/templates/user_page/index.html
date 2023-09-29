@@ -166,8 +166,11 @@
                 </div>
 
                 <div class="button">
-                    <a href={% url 'search' %} class="agree"><button id="agree_Btn">동의</button></a>
-                    <span class="close"><button>취소</button></span>
+                    <form method='post' action="{% url 'search' %}">
+                    {% csrf_token %}
+                    <class="agree"><button type="submit" name="action" value="agree" id="agree_Btn">동의</button></a>
+                    <span class="close"><button type="submit"  name="action" value="cancel">취소</button></span>
+                    </form>
                 </div>
                 <p class="modal_footer">글로벌경영기술대학 학생회</p>
             </div>
