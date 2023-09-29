@@ -364,7 +364,7 @@
     margin-top: 20px;
 }
 .stamp_tool {
-    z-index: 10;
+    z-index: 5;
     width: 350px;
     height: 420px;
     background-color: #DFEAFF;
@@ -418,13 +418,6 @@
 
 
 /* modal-section */
-.modal-section .modal_cont {
-	opacity: 0;
-	animation: scaleUp 0.5s cubic-bezier(0.165, 0.85, 0.44, 1) forwards;
-}
-.hidden{
-    display:none;
-}
 /* 모달창 뒷배경 검은화면 처리하는 건데 아직 보류 */
 /* .modal-section {
     max-width: 415px;
@@ -435,38 +428,46 @@
     position: fixed;
     z-index: 20;
     background: rgba(0, 0, 0, 0.5);
+}
+.modal-section .modal_cont {
+	opacity: 0;
+	animation: scaleUp 0.5s cubic-bezier(0.165, 0.85, 0.44, 1) forwards;
 } */
-.modal_cont {
+.hidden{
+    display:none;
+}
+.modal-cont {
     background-color: #ffffff;
     width: 310px;
-    height: 270px;
+    height: 500px;
     margin-left: 52px;
     border: 4px solid #91AEE6;
     border-radius: 30px;
-    transform: translateY(0);
-    opacity: 1;
-    transition: all 0.3s;
     color: #758DBB;
     position: absolute;
-    margin-top: 350px;
+    margin-top: -490px;
+    z-index: 10;
 }
-.modal_cont p {
+.modal-cont p {
     margin-bottom: 0;
 }
 .modal_name {
     width: 260px;
     height: 30px;
-    margin: 20px 0 0 20px;
+    margin: 15px 0 0 20px;
 }
-.modal_name p {
+.modal_name input {
     margin-left: 15px;
+    border: none;
+    background: none;
+    color: #758DBB;
+    resize: none;
+    outline:none; 
 }
 .bi-x{
     background: none;
     border: 0;
     height: 10px;
-    margin-top: -10px;
-    margin-right: 0px;
 }
 .modal_line {
     width: 230px;
@@ -474,35 +475,40 @@
     border-radius: 5px;
     margin-left: 35px;
 }
-.modal_detail {
-    background-color: #DFEAFF;
-    width: 225px;
-    height: 90px;
-    margin: 10px 0 10px 37px;
+.detail {
+    margin-top: 10px;
+    background-color: #e7eeff;
+    width: 230px;
+    height: 120px;
     border-radius: 20px;
-    padding: 10px 15px;
-    overflow-y: scroll; 
+    border:none;
+    padding: 15px;
+    margin-left: 35px;
+    resize: none;
+    outline:none;   
+    color: #858585;
+    overflow-y: scroll;
 }
 /* 설명이 길어질 경우를 대비해 스크롤 생성 */
-.modal_detail::-webkit-scrollbar-button:vertical:start:decrement,
-.modal_detail::-webkit-scrollbar-button:vertical:start:increment {
+.detail::-webkit-scrollbar-button:vertical:start:decrement,
+.detail::-webkit-scrollbar-button:vertical:start:increment {
     display: block;
     height: 5px;
 }
-.modal_detail::-webkit-scrollbar-button:vertical:end:decrement {
+.detail::-webkit-scrollbar-button:vertical:end:decrement {
     display: block;
     width: 2px;
 }
-.modal_detail::-webkit-scrollbar{
+.detail::-webkit-scrollbar{
     width: 10px;
 }  
-.modal_detail::-webkit-scrollbar-thumb {
+.detail::-webkit-scrollbar-thumb {
     background-color: #91AEE6;
     border-radius: 20px;
     background-clip: padding-box;
     border: 3px solid transparent;
 }
-.modal_detail::-webkit-scrollbar-track {
+.detail::-webkit-scrollbar-track {
     background-color: rgba(78, 78, 78, 0);
 }
 .modal_term {
@@ -510,34 +516,142 @@
 }
 .modal_date {
     font-size: 14px;
-    margin-left: 4px;
+    margin: 10px 39px;
 }
-.modal_svg {
-    margin-top: 4px;
-}
-.modal_start {
-    background-color: #DFEAFF;
-    padding: 4px 7px 0 7px;
-    margin: 0 4px;
-    border-radius: 10px;
+input[type="date"] {
+    width:100px;
+    height:30px;
+    font-size:12px;
+    color:#91AEE6;
+    background-color: #E5EFFE;
+    border:none;
+    border-radius: 22px;
+    text-align: center;
+    outline:none;
 }
 .modal_wave {
-    font-size: 20px;
+    font-size: 22px;
+    margin: 0 5px;
 }
-.modal_finish {
-    background-color: #DFEAFF;
-    padding: 4px 7px 0 7px;
-    margin: 0 4px;
-    border-radius: 10px;
+.modal_img {
+    margin: 10px 0 0 35px;
+}
+.img{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.file-box{
+    display:flex;
+    flex-direction:column;
+    text-align: center;
+    color:#758DBB;
+    font-size:14px;
+}
+/* 파일 업로드 기존 디자인 없애기 */
+.file-box input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+.file-box p{
+    margin-bottom:5px;
+}
+/* 파일(이미지) 미리보기 박스 */
+.img-box{
+    width:98px;
+    height:98px;
+    border:2px solid #91AEE6;
+    border-radius: 5px;
+    cursor:pointer;
 }
 
+/* form > button */
+.modalBtn{
+    margin: 20px 60px;
+}
+.modalBtn .submit{
+    width: 82px;
+    height: 34px;
+    border:1px solid #91AEE6;
+    border-radius: 5px;
+    background-color: #91AEE6;
+    color:#ffffff;
+    margin-right:40px;
+}
+.modalBtn .submit:hover {
+    width: 82px;
+    height: 34px;
+    border: 3px solid #91AEE6;
+    background-color: white;
+    color: #91AEE6;
+}
+.modalBtn .del{
+    width: 82px;
+    height: 34px;
+    border: 3px solid #91AEE6;
+    border-radius: 5px;
+    background-color:#ffffff;
+    color: #91AEE6;
+}
+.modalBtn .del:hover{
+    width:82px;
+    height: 34px;
+    background-color: #91AEE6;
+    color: white;
+}
+
+/* saveBtn model */
+#modal_saveBtn {
+    z-index: 100;
+    position:relative;
+    margin-top: -100px;
+}
+#modal_saveBtn .modal-savebg {
+	background: rgba(0,0,0,0);
+	animation: fadeIn 0.5s cubic-bezier(0.165, 0.85, 0.44, 1) forwards;
+}
+.modal-savebg .modal-save {
+	opacity: 0;
+	animation: scaleUp 0.5s cubic-bezier(0.165, 0.85, 0.44, 1) forwards;
+}
+.modal-save{
+    width: 310px;
+    height: 200px;
+    display:flex;
+    flex-direction:column;
+    position: absolute;
+    background-color: white;
+    border-radius: 30px;
+    border: 4px solid #91AEE6;
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 0.3s;
+    padding: 20px 20px 0 20px;
+    left: 52px;
+}
+.save_question {
+    width: 250px;
+    height: 50px;
+    background-color: #E5EFFE;
+    color: #758DBB;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 20px;
+    padding-top: 10px;
+    margin-top: 20px;
+}
 
 /* footer section */
 .footer-section {
     margin-top: 20px;
 }
 .footer-section p{
-    z-index: 10;
+    z-index: 5;
     font-size: 14px;
     font-weight: 600;
     text-align: center;
@@ -545,7 +659,7 @@
     color: rgba(97, 97, 97, 0.5);
 }
 .footer-section svg {
-    z-index: 10;
+    z-index: 5;
     color: rgba(97,97, 97, 0.5);
     margin: 3px 2px;
 }
