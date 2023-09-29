@@ -146,30 +146,32 @@ def a_events(request):
 
 
 # 스탬프 수정
-# @transaction.atomic
-# def edit_stamp(request, event_name):
-#     stamp_instance = get_object_or_404(stamp, event_name=event_name)
-#     action = request.POST.get('action')
-#     print(stamp_instance)
-#     if request.method == 'POST':
-#         # POST 데이터에서 가져와서 업데이트
-#         updated_data = {'event_name': request.POST.get('event_name'),
-#                             'event_info': request.POST.get('event_info'),
-#                             'event_start': request.POST.get('event_start'),
-#                             'event_end': request.POST.get('event_end')}
-#         if action == 'save':
-#             # 이미지 업데이트 처리
-#             image = request.FILES.get('after_image')
-#             if image:
-#                 fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'after_images'))
-#                 filename = fs.save(image.name, image)
-#                 updated_data['after_image'] = filename
+# def a_modify(request):
+# 	return render(request, 'admin_page/a_modify.html')
+@transaction.atomic
+def a_modify(request, event_name):
+    stamp_instance = get_object_or_404(stamp, event_name=event_name)
+    action = request.POST.get('action')
+    print(stamp_instance)
+    if request.method == 'POST':
+        # POST 데이터에서 가져와서 업데이트
+        updated_data = {'event_name': request.POST.get('event_name'),
+                            'event_info': request.POST.get('event_info'),
+                            'event_start': request.POST.get('event_start'),
+                            'event_end': request.POST.get('event_end')}
+        if action == 'save':
+            # 이미지 업데이트 처리
+            image = request.FILES.get('after_image')
+            if image:
+                fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'after_images'))
+                filename = fs.save(image.name, image)
+                updated_data['after_image'] = filename
                 
-#             # DB에 직접 업뎃
-#             stamp.objects.filter(event_name=event_name).update(**updated_data)
-#             return redirect('a_events')  # 수정 후 도장 목록으로 리디렉션
+            # DB에 직접 업뎃
+            stamp.objects.filter(event_name=event_name).update(**updated_data)
+            return redirect('a_events')  # 수정 후 도장 목록으로 리디렉션
         
-#     return render(request, 'admin_page/a_events.html', {'stamp_instance': stamp_instance})
+    return render(request, 'admin_page/a_modify.html', {'stamp_instance': stamp_instance})
 
 
 # # 스탬프 삭제
