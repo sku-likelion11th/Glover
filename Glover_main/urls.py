@@ -13,8 +13,8 @@ urlpatterns = [
     path('a_events/', a_events, name='a_events'),
     path('a_add/', a_add, name='a_add'),
     path('a_search/',a_search,name='a_search'),
-    path('edit_stamp/<str:event_name>/', edit_stamp, name='edit_stamp'),
-    path('delete_stamp/<str:event_name>/', delete_stamp, name='delete_stamp'),
+    # path('edit_stamp/<str:event_name>/', edit_stamp, name='edit_stamp'),
+    # path('delete_stamp/<str:event_name>/', delete_stamp, name='delete_stamp'),
     path('a_login/', a_login, name='a_login'),
     
     # introduce, makers
