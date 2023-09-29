@@ -100,54 +100,90 @@ def a_login(request):
 # 관리자 메인
 @login_required
 def a_main(request):
-	return render(
-		request,
-		'admin_page/a_main.html'
-	)
+	return render(request, 'admin_page/a_main.html')
 
 
 # stamp 리스트
 @login_required
+# @transaction.atomic
 def a_events(request):
     stamps = stamp.objects.all()
-    print(stamps)
+    
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        event_name = request.POST.get('event_name')
+        
+        if action == 'save':
+            updated_data = {'event_name': request.POST.get('event_name'),
+                            'event_info': request.POST.get('event_info'),
+                            'event_start': request.POST.get('event_start'),
+                            'event_end': request.POST.get('event_end')}
+            
+            # 스탬프 모델에 데이터 저장
+            images = request.FILES.get('after_image')
+            
+            if images:
+                fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT))
+                filename = fs.save(images.name, images)
+                updated_data['image'] = filename
+            print(event_name)
+            # DB에 직접 업뎃
+            stamp.objects.filter(event_name=event_name).update(**updated_data)
+            return redirect('a_events')  # 수정 후 도장 목록으로 리디렉션
+        
+        if action == 'delete':
+            stamp_id = request.POST.get('event_name')  # 삭제할 스탬프의 ID를 받아옴
+            print(stamp_id)
+            try:
+                delstamp = stamp.objects.get(pk=stamp_id)  # 해당 ID의 스탬프 객체를 가져옴
+                delstamp.delete()  # 스탬프 삭제
+                
+                return redirect('a_events')  # 삭제 후 리다이렉트
+            except stamp.DoesNotExist:
+                return render(request, 'admin_page/a_events.html', {'error_message': '이벤트가 존재하지 않습니다.'})
+    
     return render(request, 'admin_page/a_events.html', {'stamps': stamps})
 
-# 스탬프 삭제
-@login_required
-def delete_stamp(request, event_name):
-    delstamp = get_object_or_404(stamp, event_name=event_name)
-    
-    if request.method == 'POST':
-        # Store the post pk before deleting the comment
-        delstamp.delete()
-        return redirect('stamp_list')
-    return render(request, 'admin_page/a_events.html', {'delstamp': delstamp})
 
 # 스탬프 수정
-@transaction.atomic
-def edit_stamp(request, event_name):
-    stamp_instance = get_object_or_404(stamp, event_name=event_name)
-    
-    if request.method == 'POST':
-        # POST 데이터에서 가져와서 업데이트
-        updated_data = {'event_name': request.POST.get('event_name'),
-                        'event_info': request.POST.get('event_info'),
-                        'event_start': request.POST.get('event_start'),
-                        'event_end': request.POST.get('event_end')}
-    
-        # 이미지 업데이트 처리
-        image = request.FILES.get('after_image')
-        if image:
-            fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'after_images'))
-            filename = fs.save(image.name, image)
-            updated_data['after_image'] = filename
-            
-        # DB에 직접 업뎃
-        stamp.objects.filter(event_name=event_name).update(**updated_data)
-        return redirect('a_events')  # 수정 후 도장 목록으로 리디렉션
+# @transaction.atomic
+# def edit_stamp(request, event_name):
+#     stamp_instance = get_object_or_404(stamp, event_name=event_name)
+#     action = request.POST.get('action')
+#     print(stamp_instance)
+#     if request.method == 'POST':
+#         # POST 데이터에서 가져와서 업데이트
+#         updated_data = {'event_name': request.POST.get('event_name'),
+#                             'event_info': request.POST.get('event_info'),
+#                             'event_start': request.POST.get('event_start'),
+#                             'event_end': request.POST.get('event_end')}
+#         if action == 'save':
+#             # 이미지 업데이트 처리
+#             image = request.FILES.get('after_image')
+#             if image:
+#                 fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'after_images'))
+#                 filename = fs.save(image.name, image)
+#                 updated_data['after_image'] = filename
+                
+#             # DB에 직접 업뎃
+#             stamp.objects.filter(event_name=event_name).update(**updated_data)
+#             return redirect('a_events')  # 수정 후 도장 목록으로 리디렉션
         
-    return render(request, 'admin_page/edit_stamp.html', {'stamp_instance': stamp_instance})
+#     return render(request, 'admin_page/a_events.html', {'stamp_instance': stamp_instance})
+
+
+# # 스탬프 삭제
+# @login_required
+# def delete_stamp(request, event_name):
+#     delstamp = get_object_or_404(stamp, event_name=event_name)
+#     action = request.POST.get('action')
+    
+#     if request.method == 'POST':
+#         if action == 'delete':
+#         # Store the post pk before deleting the comment
+#             delstamp.delete()
+#             return redirect('stamp_list')
+#     return render(request, 'admin_page/a_events.html', {'delstamp': delstamp})
 
 
 # stamp 추가
@@ -164,6 +200,7 @@ def a_add(request):
             event_end = request.POST['event_end']
             image = request.FILES.get('after_image') if 'after_image' in request.FILES else None
 
+            print(event_name)
             # 데이터 유효성 검사 및 저장
             if event_name and event_info and event_start and event_end and image:
                 mystamp = stamp (
@@ -243,11 +280,10 @@ def a_search(request):
 
 
 # stamp 정보 보기
-@login_required
-def info_stamp(request, event_name):
-    event_name = unquote(event_name)
-    # 스탬프 정보 가져오기
-    stamp_instance = get_object_or_404(stamp, event_name=event_name)
+# @login_required
+# def info_stamp(request, event_name):
+#     event_name = unquote(event_name)
+#     # 스탬프 정보 가져오기
+#     stamp_instance = get_object_or_404(stamp, event_name=event_name)
     
-    return render(request, 'main_page/info_stamp.html', {'stamp_instance': stamp_instance})
-
+#     return render(request, 'main_page/info_stamp.html', {'stamp_instance': stamp_instance})

@@ -89,9 +89,8 @@
             <div class="stamp_tool">
                 <div class="stamp">
                     {% for stamp in stamps %}
-                    <button class="stampBtn" data-name="{{ stamp.event_name }}" data-info="{{ stamp.event_info }}" data-start="{{ stamp.event_start }}" data-end="{{ stamp.event_end }}">
+                    <button type="submit" class="stampBtn" data-name="{{ stamp.event_name }}" data-info="{{ stamp.event_info }}" data-start="{{ stamp.event_start }}" data-end="{{ stamp.event_end }}">
                         <img class="empty-stamp" src={{ stamp.image.url }} alt="빈 스탬프 이미지" width="100" height="100">                            
-                    </button>
                     {% endfor %}
                 </div>
             </div>
@@ -99,8 +98,10 @@
         <!--modal section-->
         <div class="modal-section">
             <div class="modal-cont hidden">
+                <form class="tmoney-font" method="post" enctype="multipart/form-data" action="{% url 'a_events' %}">
+                {% csrf_token %}
                 <div class="modal-name">
-                    <input class="header-font" type="text" placeholder="사업명" autofocus>
+                    <input class="header-font modal_name" type="text" name="event_name" placeholder="사업명" autofocus>
                     <button class="bi-x">
                         <svg width="15" height="15" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M11.8334 1.3415L10.6584 0.166504L6.00008 4.82484L1.34175 0.166504L0.166748 1.3415L4.82508 5.99984L0.166748 10.6582L1.34175 11.8332L6.00008 7.17484L10.6584 11.8332L11.8334 10.6582L7.17508 5.99984L11.8334 1.3415Z" fill="#758DBB"/>
@@ -109,29 +110,27 @@
                 </div>
                 <div class="modal_line"></div>
                 <!-- from section  -->
-                <form class="tmoney-font" method="post">
-                    {% csrf_token %}
-                    <textarea class="modal_detail" type="text" placeholder="설명"></textarea>
+                    <textarea class="modal_detail" type="text" name="event_info" placeholder="설명"></textarea>
                     <br>
                     <!-- date -->
                     <div class="modal_line"></div>
                     <p class="modal_term header-font">기간</p>
                     <div class="modal_date">
-                        <input class="modal_start" type="date">~<input class="modal_finish"type="date">
+                        <input class="modal_start" type="date" name="event_start">~<input class="modal_finish" type="date" name="event_end">
                     </div>
                     <div class="modal_line text-center"></div>
                     <!-- file upload -->
                     <p class="term header-font">스탬프 이미지</p>
                     <div class="img">
                         <div class="file-box">
-                            <input type="file" onchange="readURL(this, 'preview_after');" />
+                            <input type="file" name="after_image" accept=".jpg, .jpeg, .png, .gif"/>
                             <img id="preview_after" class="img-box" />
                         </div>
                     </div>
                     <!-- button -->
-                    <div class="modalBtn d-flex justify-content-around">             
-                        <input id="saveBtn" class="submit" type="submit" value="저장">
-                        <input id="delBtn" class="del" type="button" value="삭제">
+                    <div class="modalBtn d-flex justify-content-around">
+                        <button id="saveBtn" type="submit" class="submit" name="action" value="save">저장</button>
+                        <button id="delBtn" type="submit" class="del"  name="action" value="delete">삭제</button>
                     </div>
                 </form>
             </div>

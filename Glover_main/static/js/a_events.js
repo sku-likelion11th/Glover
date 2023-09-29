@@ -1,6 +1,6 @@
 const stampButtons = document.querySelectorAll(".stampBtn");
 const modal = document.querySelector(".modal-cont");
-const modalName = document.querySelector(".header-font");
+const modalName = document.querySelector(".modal_name");
 const modalInfo = document.querySelector(".modal_detail");
 const modalStart = document.querySelector(".modal_start");
 const modalEnd = document.querySelector(".modal_finish");
