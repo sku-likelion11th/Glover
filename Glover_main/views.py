@@ -6,29 +6,26 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.conf import settings
-from django.http import JsonResponse
-from django.urls import reverse
 import os
 
 
 # Create your views here.
 # 메인페이지
 def main(request, student_id=None):
+    flag = False
     if request.method == 'POST':
         student_id = request.POST.get('student_id')
         major = request.POST.get('major')
-
+        
         try:
             student_info = student.objects.get(student_id=student_id, major=major)
             stamp_collections = stamp_collection.objects.filter(student=student_info)
+            
+            is_consented = student_info.consent
+            if is_consented:
+                flag = True
 
-            agreed = student.objects.get(student_id=student_id)
-            agreed.consent = True
-
-            # 'search' URL 패턴에 대한 URL 생성
-            # search_url = reverse('search')
-
-            return render(request, 'user_page/participation.html', {'student_info': student_info, 'stamp_collections':stamp_collections, 'agreed': agreed})
+            return render(request, 'user_page/participation.html', {'student_info': student_info, 'stamp_collections':stamp_collections, 'flag': flag})
         
         except ObjectDoesNotExist:
             # 조회에 실패한 경우 오류 메시지를 사용자에게 표시
@@ -254,6 +251,7 @@ def a_search(request):
         # 선택된 이벤트의 체크박스 확인 후 해당 학생의 student_collection을 업데이트
         event_check1 = request.POST.getlist('hiddenInput')
         event_check2 = request.POST.getlist('hiddenInput2')
+        after_major = request.POST.get('a_major')
         
         for stamp_collection_id, is_collected_str in zip(event_check2, event_check1):
             try:
@@ -267,12 +265,10 @@ def a_search(request):
             except:
                 pass
         
-        if major:
+        if student_id and major:
             stamp_collections = stamp_collection.objects.filter(student__major__icontains=major, student__student_id__icontains=student_id, stamp=selected_event)
         else:
-            # student_id가 None이면 stamp_collections를 빈 쿼리셋으로 초기화
-            stamp_collections = stamp_collection.objects.filter(student__student_id__icontains=student_id, stamp=selected_event)
-            # stamp_collections = stamp_collection.objects.none()
+            stamp_collections = stamp_collection.objects.none()
         
 
         context = {'students': students, 
