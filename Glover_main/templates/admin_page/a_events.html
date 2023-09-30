@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>글 Lover</title>
-    <link rel="stylesheet" href={% static "css/a_events.css"%}>
-    <script src={% static "js/a_events.js"%}  defer></script>
+    <link rel="stylesheet" href={% static "css/a_events.css"%}?{% now 'U' %}>
+    <script src={% static "js/a_events.js"%}?{% now 'U' %}  defer></script>
     <!-- bootstarp 연결링크 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- font awesome 연결링크 -->
@@ -89,7 +89,7 @@
             <div class="stamp_tool">
                 <div class="stamp">
                     {% for stamp in stamps %}
-                    <button type="submit" class="stampBtn" data-name="{{ stamp.event_name }}" data-info="{{ stamp.event_info }}" data-start="{{ stamp.event_start }}" data-end="{{ stamp.event_end }}">
+                    <button type="submit" class="stampBtn" data-name="{{ stamp.event_name }}" data-info="{{ stamp.event_info }}" data-start="{{ stamp.event_start }}" data-end="{{ stamp.event_end }}" data-image="{{ stamp.image.url }}">
                         <!-- <a href="{% url 'a_modify' stamp.event_name %}"> -->
                             <img class="empty-stamp" src={{ stamp.image.url }} alt="빈 스탬프 이미지" width="100" height="100">                            
                         <!-- </a> -->
@@ -103,16 +103,17 @@
             <div class="modal-cont hidden">
                 <form class="tmoney-font" method="post" enctype="multipart/form-data" action="{% url 'a_events' %}">
                     {% csrf_token %}
+                    {{ error_message }}
                     <div class="modal_name d-flex justify-content-between">
                         <input class="header-font name_input" type="text" name="event_name" placeholder="사업명" autofocus>
-                        <button class="bi-x">
+                        <input class="hidden modal_ori_name" type="text" name="ori_name">
+                        <button class="bi-x" type="button">
                             <svg width="15" height="15" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.8334 1.3415L10.6584 0.166504L6.00008 4.82484L1.34175 0.166504L0.166748 1.3415L4.82508 5.99984L0.166748 10.6582L1.34175 11.8332L6.00008 7.17484L10.6584 11.8332L11.8334 10.6582L7.17508 5.99984L11.8334 1.3415Z" fill="#758DBB"/>
                             </svg>
                         </button>
                     </div>
                     <div class="modal_line"></div>
-                    <!-- from section  -->
                     <textarea class="detail" type="text" name="event_info" placeholder="설명"></textarea>
                     <!-- date -->
                     <p class="modal_term header-font">기간</p>
@@ -126,8 +127,10 @@
                     <p class="modal_img header-font">스탬프 이미지</p>
                     <div class="img">
                         <div class="file-box">
+                            
                             <input type="file" name="after_image" accept=".jpg, .jpeg, .png, .gif"/>
-                            <img id="preview_after" class="img-box" />
+                            <img id="preview_after" class="img-box" src="{{ stamp.image.url }}"/>
+                            
                         </div>
                     </div>
                     <!-- button -->
@@ -136,6 +139,7 @@
                         <button id="delBtn" type="submit" class="del"  name="action" value="delete">삭제</button>
                     </div>
                 </form>
+                
             </div>
         </div>
         <!-- footer section -->
