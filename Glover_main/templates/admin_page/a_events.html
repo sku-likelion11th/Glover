@@ -90,9 +90,7 @@
                 <div class="stamp">
                     {% for stamp in stamps %}
                     <button type="submit" class="stampBtn" data-name="{{ stamp.event_name }}" data-info="{{ stamp.event_info }}" data-start="{{ stamp.event_start }}" data-end="{{ stamp.event_end }}" data-image="{{ stamp.image.url }}">
-                        <!-- <a href="{% url 'a_modify' stamp.event_name %}"> -->
                             <img class="empty-stamp" src={{ stamp.image.url }} alt="빈 스탬프 이미지" width="100" height="100">                            
-                        <!-- </a> -->
                     </button>
                     {% endfor %}
                 </div>

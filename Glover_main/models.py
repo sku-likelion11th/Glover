@@ -36,7 +36,7 @@ class student(models.Model):
         return f'{self.student_id} - {self.major} - {self.full_name} - {self.consent}'
     
     
-# stamp추가할 때마다 중계모델에 추가
+# stamp 추가할 때마다 중계모델에 추가
 @receiver(post_save, sender=stamp)
 def create_stamp_collection(sender, instance, **kwargs):
     students = student.objects.all()

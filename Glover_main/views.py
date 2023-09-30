@@ -2,13 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import student, stamp, stamp_collection
 from django.db import transaction
 from django.core.files.storage import FileSystemStorage
+from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.conf import settings
-import os
 from django.http import JsonResponse
-from urllib.parse import unquote
 from django.urls import reverse
+import os
+
 
 # Create your views here.
 # 메인페이지
@@ -17,51 +18,54 @@ def main(request, student_id=None):
         student_id = request.POST.get('student_id')
         major = request.POST.get('major')
 
-        student_info = student.objects.get(student_id=student_id, major=major)
-        stamp_collections = stamp_collection.objects.filter(student=student_info)
+        try:
+            student_info = student.objects.get(student_id=student_id, major=major)
+            stamp_collections = stamp_collection.objects.filter(student=student_info)
 
-        agreed = student.objects.get(student_id=student_id)
-        agreed.consent = True
-        # is_agreed = agreed.consent
-        # print(is_agreed)
+            agreed = student.objects.get(student_id=student_id)
+            agreed.consent = True
 
-        # 'search' URL 패턴에 대한 URL 생성
-        search_url = reverse('search')
+            # 'search' URL 패턴에 대한 URL 생성
+            # search_url = reverse('search')
+
+            return render(request, 'user_page/participation.html', {'student_info': student_info, 'stamp_collections':stamp_collections, 'agreed': agreed})
         
-        return render(request, 'user_page/participation.html', {'student_info': student_info, 'stamp_collections':stamp_collections, 'agreed': agreed})
+        except ObjectDoesNotExist:
+            # 조회에 실패한 경우 오류 메시지를 사용자에게 표시
+            error_message = "학생 정보를 찾을 수 없습니다."
+            return render(request, 'user_page/index.html', {'error_message': error_message})
 
     return render(request, 'user_page/index.html')
 
-
 # ?
-def search(request):
-    student_id = request.GET.get('student_id', '')
-    # 데이터베이스에서 학번을 사용하여 학생 객체를 가져옵니다.
-    student_obj = get_object_or_404(student, student_id=student_id)
-    # 학생 객체에서 이름을 추출합니다.
-    full_name = student_obj.full_name
+# def search(request):
+#     student_id = request.GET.get('student_id', '')
+#     # 데이터베이스에서 학번을 사용하여 학생 객체를 가져옵니다.
+#     student_obj = get_object_or_404(student, student_id=student_id)
+#     # 학생 객체에서 이름을 추출합니다.
+#     full_name = student_obj.full_name
     
-    # 학번과 이름을 템플릿으로 전달
-    context = {
-        'student_id': student_id,
-        'full_name':full_name,
-    }
+#     # 학번과 이름을 템플릿으로 전달
+#     context = {
+#         'student_id': student_id,
+#         'full_name':full_name,
+#     }
 
-    return render(request, 'user_page/participation.html', context)
+#     return render(request, 'user_page/participation.html', context)
 
 
-def update_consent(request):
-    if request.method == 'POST':
-        student_id = request.POST.get('student_id')
-        student = student.objects.get(student_id=student_id)
+# def update_consent(request):
+#     if request.method == 'POST':
+#         student_id = request.POST.get('student_id')
+#         student = student.objects.get(student_id=student_id)
         
-        # 최초 동의 필드를 업데이트
-        student.consent = True
-        student.save()
+#         # 최초 동의 필드를 업데이트
+#         student.consent = True
+#         student.save()
         
-        return JsonResponse({'message': '동의가 업데이트되었습니다.'})
-    else:
-        return JsonResponse({'message': 'POST 요청이 아닙니다.'}, status=400)
+#         return JsonResponse({'message': '동의가 업데이트되었습니다.'})
+#     else:
+#         return JsonResponse({'message': 'POST 요청이 아닙니다.'}, status=400)
 
 
 # 서비스 소개
@@ -88,8 +92,8 @@ def a_login(request):
             # 로그인 성공 후 리다이렉트 또는 다른 작업을 수행할 수 있습니다.
             return redirect('a_main')
         else:
-            # 로그인 실패 처리
-            return render(request, 'admin_page/a_login.html', {'error_message': '로그인에 실패했습니다.'})
+            # 로그인 실패
+            return render(request, 'admin_page/a_login.html', {'error_message': '아이디와 비밀번호를 확인해주세요.'})
         
     if request.user.is_authenticated:
         return redirect('a_main')
@@ -103,7 +107,7 @@ def a_main(request):
 	return render(request, 'admin_page/a_main.html')
 
 
-# stamp 리스트
+# stamp 리스트(수정, 삭제)
 @login_required
 @transaction.atomic
 def a_events(request):
@@ -118,8 +122,9 @@ def a_events(request):
                             'event_info': request.POST.get('event_info'),
                             'event_start': request.POST.get('event_start'),
                             'event_end': request.POST.get('event_end')}
+            
             ori_name = request.POST.get('ori_name')
-            stamp_fil = stamp.objects.filter(event_name=ori_name)
+            new_name = request.POST.get('event_name')
             
             # 스탬프 모델에 데이터 저장/이미지 입력
             images = request.FILES.get('after_image')
@@ -128,12 +133,16 @@ def a_events(request):
                     fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT))
                     filename = fs.save(images.name, images)
                     updated_data['image'] = filename
-                for i in stamp_fil:
-                    print(i)
-                print(ori_name)
-                print(updated_data)
+                    
                 # DB에 직접 업뎃
                 stamp.objects.filter(event_name=ori_name).update(**updated_data)
+                
+                new_stamp_instance = stamp.objects.get(event_name=new_name)  # 새로운 event_name에 해당하는 stamp 인스턴스
+
+                # 2. 연결된 stamp_collection 레코드 찾기 및 외래 키 값 업데이트
+                related_stamp_collections = stamp_collection.objects.filter(stamp__event_name=ori_name)
+                related_stamp_collections.update(stamp=new_stamp_instance)
+                
                 return redirect('a_events')  # 수정 후 도장 목록으로 리디렉션
 
             except stamp.DoesNotExist:
@@ -154,45 +163,31 @@ def a_events(request):
     return render(request, 'admin_page/a_events.html', {'stamps': stamps})
 
 
-# 스탬프 수정
-@transaction.atomic
-def a_modify(request, event_name):
-    stamp_instance = get_object_or_404(stamp, event_name=event_name)
-    action = request.POST.get('action')
-    print(stamp_instance)
-    if request.method == 'POST':
-        # POST 데이터에서 가져와서 업데이트
-        updated_data = {'event_name': request.POST.get('event_name'),
-                            'event_info': request.POST.get('event_info'),
-                            'event_start': request.POST.get('event_start'),
-                            'event_end': request.POST.get('event_end')}
-        if action == 'save':
-            # 이미지 업데이트 처리
-            image = request.FILES.get('after_image')
-            if image:
-                fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'after_images'))
-                filename = fs.save(image.name, image)
-                updated_data['after_image'] = filename
-                
-            # DB에 직접 업뎃
-            stamp.objects.filter(event_name=event_name).update(**updated_data)
-            return redirect('a_events')  # 수정 후 도장 목록으로 리디렉션
-        
-    return render(request, 'admin_page/a_modify.html', {'stamp_instance': stamp_instance})
-
-
-# # 스탬프 삭제
-# @login_required
-# def delete_stamp(request, event_name):
-#     delstamp = get_object_or_404(stamp, event_name=event_name)
+# 스탬프 수정(modify 페이지)
+# @transaction.atomic
+# def a_modify(request, event_name):
+#     stamp_instance = get_object_or_404(stamp, event_name=event_name)
 #     action = request.POST.get('action')
-    
+#     print(stamp_instance)
 #     if request.method == 'POST':
-#         if action == 'delete':
-#         # Store the post pk before deleting the comment
-#             delstamp.delete()
-#             return redirect('stamp_list')
-#     return render(request, 'admin_page/a_events.html', {'delstamp': delstamp})
+#         # POST 데이터에서 가져와서 업데이트
+#         updated_data = {'event_name': request.POST.get('event_name'),
+#                             'event_info': request.POST.get('event_info'),
+#                             'event_start': request.POST.get('event_start'),
+#                             'event_end': request.POST.get('event_end')}
+#         if action == 'save':
+#             # 이미지 업데이트 처리
+#             image = request.FILES.get('after_image')
+#             if image:
+#                 fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'after_images'))
+#                 filename = fs.save(image.name, image)
+#                 updated_data['after_image'] = filename
+                
+#             # DB에 직접 업뎃
+#             stamp.objects.filter(event_name=event_name).update(**updated_data)
+#             return redirect('a_events')  # 수정 후 도장 목록으로 리디렉션
+        
+#     return render(request, 'admin_page/a_modify.html', {'stamp_instance': stamp_instance})
 
 
 # stamp 추가
@@ -234,7 +229,7 @@ def a_add(request):
     return render(request, 'admin_page/a_add.html', {'error_message': error_message})
 
 
-#이벤트 참여자 체크하는 페이지
+# 이벤트 참여자 체크
 @login_required
 def a_search(request):
     events = stamp.objects.all()
@@ -251,9 +246,10 @@ def a_search(request):
 
         if major:
            students = students.filter(major=major)
-
+        
         if student_id:
            students = students.filter(student_id__icontains=student_id)
+        
         
         # 선택된 이벤트의 체크박스 확인 후 해당 학생의 student_collection을 업데이트
         event_check1 = request.POST.getlist('hiddenInput')
@@ -270,12 +266,14 @@ def a_search(request):
                 collection.save()
             except:
                 pass
-        # print(students)
-        if student_id:
-            stamp_collections = stamp_collection.objects.filter(student__student_id__icontains=student_id, stamp=selected_event)
+        
+        if major:
+            stamp_collections = stamp_collection.objects.filter(student__major__icontains=major, student__student_id__icontains=student_id, stamp=selected_event)
         else:
             # student_id가 None이면 stamp_collections를 빈 쿼리셋으로 초기화
-            stamp_collections = stamp_collection.objects.none()
+            stamp_collections = stamp_collection.objects.filter(student__student_id__icontains=student_id, stamp=selected_event)
+            # stamp_collections = stamp_collection.objects.none()
+        
 
         context = {'students': students, 
                    'events': events, 

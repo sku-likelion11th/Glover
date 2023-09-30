@@ -58,6 +58,7 @@
                 </div>
             </div>
         </nav>
+
         <!-- header section -->
         <div class="header-section">
             <div class="header-circle">
@@ -74,6 +75,7 @@
                 <img src={% static "images/cloud.png"%} alt="구름3" class="cloud3">
             </div>
         </div>
+        
         <!-- durumari section -->
         <div class="durumari_section">
             <img class="durumari" src={% static "images/durumari.png" %} alt="두루마리">
@@ -87,23 +89,6 @@
         </div>
 
         <!-- login section -->
-        {% comment %} <form class="login" id="login" method="post">
-            {% csrf_token %}
-            <!-- select 요소와 아이콘을 감싸는 컨테이너 추가 -->
-            <select class="custom-select">
-                <option value="0" disabled selected>학과</option>
-                <option value="1">관광개발학과</option>
-                <option value="2">경영학과</option>
-                <option value="3">글로벌물류학부</option>
-                <option value="4">동아시아물류학부</option>
-                <option value="5">산업경영공학과</option>
-            </select>
-            <div class="id">
-                <input type="id" id="student_id" placeholder="학번">
-            </div>
-            <button class="submit" type="button">조회</button>
-        </form> {% endcomment %}
-
         <form class="login" id="login" method="post" action="{% url 'search' %}">
             {% csrf_token %}
             <select class="custom-select" id="major_dropdown" name="major">
@@ -118,6 +103,8 @@
                 <input type="text" name="student_id" placeholder="학번" required>
             </div>
             <button class="submit" type="submit">조회</button>
+            <br>
+            {{ error_message }}
         </form>
 
         <!-- first modal section  -->
