@@ -7,6 +7,7 @@ urlpatterns = [
     # 사용자 페이지
 	path('', main, name='main'),
     path('search/', main, name='search'),
+    path('search/<int:student_id>', is_consented, name='is_consented'),
     
     # 관리자 페이지
     path('a_login/', a_login, name='a_login'),
