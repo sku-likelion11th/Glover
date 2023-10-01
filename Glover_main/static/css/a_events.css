@@ -409,7 +409,7 @@
 }
 .stamp img{
     width: 80px;
-    height: auto;
+    height: 80px;
     margin: 10px 0;
     /* 혹시나 배경이나 선이 있을까봐 넣어둠 */
     border: none;
@@ -419,21 +419,6 @@
 
 
 /* modal-section */
-/* 모달창 뒷배경 검은화면 처리하는 건데 아직 보류 */
-/* .modal-section {
-    max-width: 415px;
-    min-height: 100vh;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    position: fixed;
-    z-index: 20;
-    background: rgba(0, 0, 0, 0.5);
-}
-.modal-section .modal_cont {
-	opacity: 0;
-	animation: scaleUp 0.5s cubic-bezier(0.165, 0.85, 0.44, 1) forwards;
-} */
 .hidden{
     display:none;
 }
@@ -520,6 +505,8 @@
     margin: 10px 39px;
 }
 input[type="date"] {
+    padding: 0 8px;
+    background: url(../../static/images/calendar.svg) no-repeat right 10px center / 10px auto;
     width:100px;
     height:30px;
     font-size:12px;
@@ -529,6 +516,12 @@ input[type="date"] {
     border-radius: 22px;
     text-align: center;
     outline:none;
+}
+[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
 }
 .modal_wave {
     font-size: 22px;
