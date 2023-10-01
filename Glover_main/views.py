@@ -6,13 +6,13 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.conf import settings
+from django.http import JsonResponse
 import os
 
 
 # Create your views here.
 # 메인페이지
 def main(request, student_id=None):
-    flag = False
     if request.method == 'POST':
         student_id = request.POST.get('student_id')
         major = request.POST.get('major')
@@ -21,10 +21,12 @@ def main(request, student_id=None):
             student_info = student.objects.get(student_id=student_id, major=major)
             stamp_collections = stamp_collection.objects.filter(student=student_info)
             
-            is_consented = student_info.consent
-            if is_consented:
-                flag = True
-
+            student_info.consent = True
+            flag = student_info.consent
+            context = {'consent': flag}
+            student.objects.filter(student_id=student_info.student_id).update(**context)
+            
+            
             return render(request, 'user_page/participation.html', {'student_info': student_info, 'stamp_collections':stamp_collections, 'flag': flag})
         
         except ObjectDoesNotExist:
@@ -33,6 +35,17 @@ def main(request, student_id=None):
             return render(request, 'user_page/index.html', {'error_message': error_message})
 
     return render(request, 'user_page/index.html')
+
+# is_consented
+def is_consented(request, student_id):
+    try:
+        flag = student.objects.get(student_id=student_id)
+        
+        
+        return JsonResponse({'flag': flag.consent})
+    except:
+        return JsonResponse({'flag': 'notfound'})
+    
 
 # ?
 # def search(request):
