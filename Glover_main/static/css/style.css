@@ -498,7 +498,7 @@
 .button{
     text-align: center;
 }
-.agree button{
+.agree #agree_Btn {
     width:82px;
     height: 34px;
     border:1px solid #91AEE6;

@@ -6,6 +6,7 @@ const modalInfo = document.querySelector(".detail");
 const modalStart = document.querySelector(".modal_start");
 const modalEnd = document.querySelector(".modal_finish");
 const modalClose = document.querySelector(".bi-x");
+const imgElement = document.getElementById("preview_after");
 
 function formatDate(dateString) {
     const date = new Date(dateString);
@@ -23,6 +24,7 @@ function init() {
             const info = button.getAttribute("data-info");
             const startDate = formatDate(button.getAttribute("data-start"));
             const endDate = formatDate(button.getAttribute("data-end"));
+            const stampImg = button.getAttribute("data-image");
 
             // modaloriName.textContent = ori_name;
             // modalName.textContent = name;
@@ -36,6 +38,7 @@ function init() {
             modalStart.value = startDate;
             modalEnd.value = endDate;
             modal.classList.remove("hidden");
+            imgElement.setAttribute("src", stampImg);
         });
     });
 
