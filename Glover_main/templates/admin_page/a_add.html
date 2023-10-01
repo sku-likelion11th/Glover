@@ -78,38 +78,43 @@
                     <form method='post' class="tmoney-font" enctype="multipart/form-data" action="{% url 'a_add' %}">
                         {% csrf_token %}
                         {{ error_message }}
-                    <div class="modal-head">
-                        <input class="header-font" type="text" name="event_name" id="event_name" placeholder="사업명" autofocus>
-                        <button class="bi-x" onclick="location.href='{% url 'a_events' %}'">
-                            <svg width="15" height="15" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M11.8334 1.3415L10.6584 0.166504L6.00008 4.82484L1.34175 0.166504L0.166748 1.3415L4.82508 5.99984L0.166748 10.6582L1.34175 11.8332L6.00008 7.17484L10.6584 11.8332L11.8334 10.6582L7.17508 5.99984L11.8334 1.3415Z" fill="#758DBB"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="modal-bar"></div>
-                        <textarea class="detail" type="text" name="event_info" id="id_event_info" placeholder="설명"></textarea>
-                        <br>
-                        <!-- date -->
-                        <p class="term header-font">기간</p>
-                        <div class="date">
-                            <input type="date" name="event_start" id="id_event_start">~<input type="date" name="event_end" id="id_event_end">
+                        <div class="modal-head">
+                            <input class="header-font" type="text" name="event_name" id="event_name" placeholder="사업명" autofocus>
+                            <button class="bi-x" onclick="location.href='{% url 'a_events' %}'">
+                                <svg width="15" height="15" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.8334 1.3415L10.6584 0.166504L6.00008 4.82484L1.34175 0.166504L0.166748 1.3415L4.82508 5.99984L0.166748 10.6582L1.34175 11.8332L6.00008 7.17484L10.6584 11.8332L11.8334 10.6582L7.17508 5.99984L11.8334 1.3415Z" fill="#758DBB"/>
+                                </svg>
+                            </button>
                         </div>
-                        <div class="modal-bar2 text-center"></div>
-                        <!-- file upload -->
-                        <p class="term header-font">스탬프 이미지</p>
-                        <div class="img">
-                            <div class="file-box">
-                                <input type="file" name="after_image" id="after_image" accept=".jpg, .jpeg, .png, .gif" onchange="readURL(this, 'preview_after');" required/>
-                                <img id="preview_after" class="img-box" />
+                        <div class="modal-bar"></div>
+                            <textarea class="detail" type="text" name="event_info" id="id_event_info" placeholder="설명"></textarea>
+                            <br>
+                            <!-- date -->
+                            <p class="term header-font">기간</p>
+                            <div class="date">
+                                <input type="date" name="event_start" id="id_event_start">
+                                <div class="modal_wave">~</div>
+                                <input type="date" name="event_end" id="id_event_end">
                             </div>
-                        <!-- button -->
-                        <div class="button">
-                            <button type="submit" class="submit" name="action" value="save">저장</button>
-                            <button type="submit" class="del"  name="action" value="delete" onclick="location.href='{% url 'a_events' %}'">삭제</button>
-                        </form>
-                    </div>
+                            <div class="modal-bar2 text-center"></div>
+                            <!-- file upload -->
+                            <p class="term header-font">스탬프 이미지</p>
+                            <div class="img">
+                                <div class="file-box">
+                                    <input type="file" name="after_image" id="after_image" accept=".jpg, .jpeg, .png, .gif" onchange="readURL(this, 'preview_after');" required/>
+                                    <img id="preview_after" class="img-box" />
+                                </div>
+                            </div>
+                            <!-- button -->
+                            <div class="button">
+                                <button type="submit" class="submit" name="action" value="save">저장</button>
+                                <button type="submit" class="del"  name="action" value="delete" onclick="location.href='{% url 'a_events' %}'">삭제</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
+        </div>
         <!-- footer section -->
         <div class="footer-section jamsil-font">
             <div class="firstline d-flex justify-content-center ">
