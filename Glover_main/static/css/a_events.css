@@ -337,11 +337,11 @@
 }
 .stamp-addBtn button{
     width: 180px;
-    height: 23px;
+    height: 52px;
     background: none;
     border: none;
     text-align: center;
-    margin-top: 9px;
+    margin-top: -2px;
     color: #91AEE6;
     z-index: 10;
     font-size: 18px;
@@ -355,7 +355,7 @@
 }
 .stamp-addBtn button:hover{
     color: white;
-    margin-top: 9px;
+    margin-top: -2px;
 }
 
 
@@ -414,6 +414,7 @@
     /* 혹시나 배경이나 선이 있을까봐 넣어둠 */
     border: none;
     background-color: transparent;
+    border-radius: 50px;
 }
 
 
