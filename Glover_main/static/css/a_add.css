@@ -399,7 +399,30 @@
     justify-content: space-around;
     color:#91AEE6;
 }
+/* input[type="date"] {
+    width:100px;
+    height:30px;
+    font-size:12px;
+    color:#91AEE6;
+    background-color: #E5EFFE;
+    border:none;
+    border-radius: 22px;
+    text-align: center;
+    outline:none;
+    cursor: pointer;
+}
+[type="date"] {
+    background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ; 
+}
+[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+} */
 input[type="date"] {
+    padding: 0 8px;
+    background: url(../../static/images/calendar.svg) no-repeat right 10px center / 10px auto;
     width:100px;
     height:30px;
     font-size:12px;
@@ -410,12 +433,21 @@ input[type="date"] {
     text-align: center;
     outline:none;
 }
+[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+.modal_wave {
+    font-size: 22px;
+    margin: 0 5px;
+}
 .modal-bar2 {
     width: 260px;
     border: 2px solid #91AEE6;
     border-radius: 5px;
-    margin: 10px 0;
-    
+    margin: 10px 0;     
 }
 
 /* form section > file */
