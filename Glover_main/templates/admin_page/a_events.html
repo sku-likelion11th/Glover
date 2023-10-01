@@ -125,10 +125,8 @@
                     <p class="modal_img header-font">스탬프 이미지</p>
                     <div class="img">
                         <div class="file-box">
-                            
-                            <input type="file" name="after_image" accept=".jpg, .jpeg, .png, .gif"/>
+                            <input type="file" name="after_image" id="after_image" accept=".jpg, .jpeg, .png, .gif" onchange="readURL(this, 'preview_after');" required/>
                             <img id="preview_after" class="img-box" src="{{ stamp.image.url }}"/>
-                            
                         </div>
                     </div>
                     <!-- button -->

@@ -319,13 +319,15 @@
     margin:auto;
     margin-top:20px;
 }
-.d_write p{
+.d_write {
+    margin-top: -330px;
+}
+.d_write p {
     z-index: 20;
+    margin-bottom: 37px;
     position:relative;
-    margin-top:-150px;
     text-align: center;
     text-shadow: 0px 100px 70px #ffffffc9;    /* 두루마리 뒤 반짝이*/
-    
 }
 
 

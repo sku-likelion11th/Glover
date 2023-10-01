@@ -429,15 +429,6 @@
 .makers {
     margin-bottom: 100px;
 }
-.glover-section {
-    flex-wrap: wrap;
-}
-.likelion-section {
-    grid-gap: 20px;
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 1fr 1fr;
-}
 .team {
     margin: 70px 0 20px 0;
 }
@@ -462,14 +453,19 @@
 .team .color {
     color: #2A4884;
 }
+.glover-section {
+    flex-wrap: wrap;
+}
+.likelion-section {
+    flex-wrap: wrap;  
+}
 .box_tool{
     z-index: 10;
 }
-
-.m_mimo1 img {
+/* .m_mimo1 img {
     width: 60px;
     height: 60px;
-}
+} */
 .m_box {
     background-color: #fff;
     border: 1px solid #2A4884;
