@@ -31,7 +31,7 @@ def main(request, student_id=None):
         except ObjectDoesNotExist:
             # 조회에 실패한 경우 오류 메시지를 사용자에게 표시
             error_message = "학생 정보를 찾을 수 없습니다."
-            return render(request, 'user_page/index.html', {'error_message': error_message})
+            return render(request, 'user_page/index.html', {'error_message': error_message, 'flag': False})
 
     return render(request, 'user_page/index.html')
 
