@@ -7,38 +7,6 @@ var consentStatus = document.getElementById("consent_status");  // 동의 여부
 // 버튼 요소 가져오기
 var submitButton = document.querySelector(".submit");
 
-// 버튼 클릭 이벤트 핸들러 등록
-// submitButton.addEventListener("click", function(event) {
-//     event.preventDefault();
-//     var is_consented = '';
-//     var not_blur = '';
-//     var studentIdValue = studentIdInput.value;
-
-//     fetch(`search/${studentIdValue}`)
-//                 .then((response) => {
-//                     if (!response.ok) {
-//                         throw new Error('Network response was not ok');
-//                     }
-//                     return response.json();
-//                 })
-//                 .then(data => {
-//                     is_consented = data.flag ? 'none' : 'block';
-//                     not_blur = data.flag ? '' : 'blur-effect';
-//                     console.log(typeof data.flag);
-//                     console.log(is_consented)
-//                     console.log(not_blur)
-//                 })
-//                 .catch((error) => console.log("error:", error))
-
-//     // var agreeBtn = document.getElementById('agree_Btn');
-//     //     agreeBtn.addEventListener("click", function() {
-//     //         document.getElementById('login').submit();
-//     // })
-
-//     // // 모달 창 열기
-//     modal.style.display = is_consented;
-//     element.classList.add(not_blur); // "blur" 클래스 추가
-// });
 submitButton.addEventListener("click", async function(event) {
     event.preventDefault();
     var is_consented = '';
