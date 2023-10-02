@@ -368,7 +368,7 @@
 }
 .stamp img{
     width: 80px;
-    height: auto;
+    height: 80px;
     margin: 10px 0;
     /* 혹시나 배경이나 선이 있을까봐 넣어둠 */
     border: none;
