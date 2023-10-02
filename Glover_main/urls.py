@@ -15,7 +15,6 @@ urlpatterns = [
     path('a_events/', a_events, name='a_events'),
     path('a_add/', a_add, name='a_add'),
     path('a_search/',a_search,name='a_search'),
-    # path('a_modify/<str:event_name>/',a_modify,name='a_modify'),
     
     # introduce, makers
     path('introduce/', introduce, name='introduce'),
