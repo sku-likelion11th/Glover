@@ -26,7 +26,6 @@ def main(request, student_id=None):
             context = {'consent': flag}
             student.objects.filter(student_id=student_info.student_id).update(**context)
             
-            
             return render(request, 'user_page/participation.html', {'student_info': student_info, 'stamp_collections':stamp_collections, 'flag': flag})
         
         except ObjectDoesNotExist:

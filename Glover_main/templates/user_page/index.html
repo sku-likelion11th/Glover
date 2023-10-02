@@ -89,7 +89,7 @@
         </div>
 
         <!-- login section -->
-        <form class="login" id="login" method="post" action="{% url 'search' %}">
+        <form class="login" id="login" method="post">
             {% csrf_token %}
             <select class="custom-select" id="major_dropdown" name="major">
                 <option value="0" disabled selected>학과</option>
@@ -150,9 +150,7 @@
                         경우 글:LOVER♧ 사용에 제한되어 이용하실 수
                         없습니다.
                     </p>
-
                     <p class="remind"><i class="fa-regular fa-hand-point-right" style="color: #2a4884;"></i> 위와 같이 개인정보를<br> 수집이용하는데 동의하십니까?</p>
-
                 </div>
 
                 <div class="button">
