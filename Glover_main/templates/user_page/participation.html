@@ -61,6 +61,7 @@
                 </div>
             </div>
         </nav>
+        
         <!-- header section -->
         <div class="header-section">
             <div class="header-circle">
@@ -87,13 +88,11 @@
                 </div>
                 <div class="stamp">
                     {% for collection in stamp_collections %}
-                    {% if collection.is_collected %}
+                        {% if collection.is_collected %}
                         <button class="stampBtn" data-name="{{ collection.stamp.event_name }}" data-info="{{ collection.stamp.event_info }}" data-start="{{ collection.stamp.event_start }}" data-end="{{ collection.stamp.event_end }}">
                             <img src="{{ collection.stamp.image.url }}" alt="수집 이미지" width="100" height="100">
                         </button>
-                            {% else %}
-                            <img src={% static "images/afterstamp.png" %} alt="미수집 이미지" width="100" height="100">
-                            {% endif %}
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
