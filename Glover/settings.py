@@ -133,3 +133,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SESSION_ENGINE = "django.contrib.sessions.backends.db"  # 데이터베이스를 세션 백엔드로 사용
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+LOGIN_URL = '/main/a_login/'
