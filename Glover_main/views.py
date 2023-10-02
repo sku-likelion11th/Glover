@@ -18,7 +18,7 @@ def main(request, student_id=None):
         major = request.POST.get('major')
         
         try:
-            student_info = student.objects.get(student_id=student_id, major=major)
+            student_info = student.objects.get(student_id=student_id, major__icontains=major)
             stamp_collections = stamp_collection.objects.filter(student=student_info)
             
             student_info.consent = True
@@ -223,7 +223,6 @@ def a_search(request):
         else:
             stamp_collections = stamp_collection.objects.none()
         
-
         context = {'students': students, 
                    'events': events, 
                    'initial_data': request.POST, 
