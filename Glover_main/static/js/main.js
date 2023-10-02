@@ -7,6 +7,7 @@ var consentStatus = document.getElementById("consent_status");  // 동의 여부
 // 버튼 요소 가져오기
 var submitButton = document.querySelector(".submit");
 
+// 버튼 클릭 이벤트 핸들러 등록
 submitButton.addEventListener("click", async function(event) {
     event.preventDefault();
     var is_consented = '';

@@ -87,29 +87,28 @@
                             </button>
                         </div>
                         <div class="modal-bar"></div>
-                            <textarea class="detail" type="text" name="event_info" id="id_event_info" placeholder="설명"></textarea>
-                            <br>
-                            <!-- date -->
-                            <p class="term header-font">기간</p>
-                            <div class="date">
-                                <input type="date" name="event_start" id="id_event_start">
-                                <div class="modal_wave">~</div>
-                                <input type="date" name="event_end" id="id_event_end">
+                        <textarea class="detail" type="text" name="event_info" id="id_event_info" placeholder="설명"></textarea>
+                        <br>
+                        <!-- date -->
+                        <p class="term header-font">기간</p>
+                        <div class="date">
+                            <input type="date" name="event_start" id="id_event_start">
+                            <div class="modal_wave">~</div>
+                            <input type="date" name="event_end" id="id_event_end">
+                        </div>
+                        <div class="modal-bar2 text-center"></div>
+                        <!-- file upload -->
+                        <p class="term header-font">스탬프 이미지</p>
+                        <div class="img">
+                            <div class="file-box">
+                                <input type="file" name="after_image" id="after_image" accept=".jpg, .jpeg, .png, .gif" onchange="readURL(this, 'preview_after');" required/>
+                                <img id="preview_after" class="img-box" />
                             </div>
-                            <div class="modal-bar2 text-center"></div>
-                            <!-- file upload -->
-                            <p class="term header-font">스탬프 이미지</p>
-                            <div class="img">
-                                <div class="file-box">
-                                    <input type="file" name="after_image" id="after_image" accept=".jpg, .jpeg, .png, .gif" onchange="readURL(this, 'preview_after');" required/>
-                                    <img id="preview_after" class="img-box" />
-                                </div>
-                            </div>
-                            <!-- button -->
-                            <div class="button">
-                                <button type="submit" class="submit" name="action" value="save">저장</button>
-                                <button type="submit" class="del"  name="action" value="delete" onclick="location.href='{% url 'a_events' %}'">삭제</button>
-                            </div>
+                        </div>
+                        <!-- button -->
+                        <div class="button">
+                            <button type="submit" class="submit" name="action" value="save">저장</button>
+                            <button type="submit" class="del"  name="action" value="delete" onclick="location.href='{% url 'a_events' %}'">삭제</button>
                         </div>
                     </form>
                 </div>

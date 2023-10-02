@@ -39,9 +39,9 @@
         </div>
         <!-- button section -->
         <div class="button-section text-center">
+            {{ error_message }}
             <form method="post">
             {% csrf_token %}
-            {{ error_message }}
             <div class="admin_id">
                 <input type="text" name="username" id="username" placeholder="아이디" required>
             </div>
