@@ -3,10 +3,10 @@ from .models import student, stamp, stamp_collection
 from django.db import transaction
 from django.core.files.storage import FileSystemStorage
 from django.core.exceptions import ObjectDoesNotExist
+from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.conf import settings
-from django.http import JsonResponse
 import os
 
 
@@ -44,37 +44,6 @@ def is_consented(request, student_id):
         return JsonResponse({'flag': flag.consent})
     except:
         return JsonResponse({'flag': 'notfound'})
-    
-
-# ?
-# def search(request):
-#     student_id = request.GET.get('student_id', '')
-#     # 데이터베이스에서 학번을 사용하여 학생 객체를 가져옵니다.
-#     student_obj = get_object_or_404(student, student_id=student_id)
-#     # 학생 객체에서 이름을 추출합니다.
-#     full_name = student_obj.full_name
-    
-#     # 학번과 이름을 템플릿으로 전달
-#     context = {
-#         'student_id': student_id,
-#         'full_name':full_name,
-#     }
-
-#     return render(request, 'user_page/participation.html', context)
-
-
-# def update_consent(request):
-#     if request.method == 'POST':
-#         student_id = request.POST.get('student_id')
-#         student = student.objects.get(student_id=student_id)
-        
-#         # 최초 동의 필드를 업데이트
-#         student.consent = True
-#         student.save()
-        
-#         return JsonResponse({'message': '동의가 업데이트되었습니다.'})
-#     else:
-#         return JsonResponse({'message': 'POST 요청이 아닙니다.'}, status=400)
 
 
 # 서비스 소개
@@ -160,7 +129,7 @@ def a_events(request):
         # 삭제 눌렀을 때
         if action == 'delete':
             ori_stamp = request.POST.get('ori_name')  # 삭제할 스탬프의 ID를 받아옴
-            print(ori_stamp)
+            
             try:
                 delstamp = stamp.objects.get(pk=ori_stamp)  # 해당 ID의 스탬프 객체를 가져옴
                 delstamp.delete()  # 스탬프 삭제
@@ -170,33 +139,6 @@ def a_events(request):
                 return render(request, 'admin_page/a_events.html', {'error_message': '이벤트가 존재하지 않습니다.'})
     
     return render(request, 'admin_page/a_events.html', {'stamps': stamps})
-
-
-# 스탬프 수정(modify 페이지)
-# @transaction.atomic
-# def a_modify(request, event_name):
-#     stamp_instance = get_object_or_404(stamp, event_name=event_name)
-#     action = request.POST.get('action')
-#     print(stamp_instance)
-#     if request.method == 'POST':
-#         # POST 데이터에서 가져와서 업데이트
-#         updated_data = {'event_name': request.POST.get('event_name'),
-#                             'event_info': request.POST.get('event_info'),
-#                             'event_start': request.POST.get('event_start'),
-#                             'event_end': request.POST.get('event_end')}
-#         if action == 'save':
-#             # 이미지 업데이트 처리
-#             image = request.FILES.get('after_image')
-#             if image:
-#                 fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'after_images'))
-#                 filename = fs.save(image.name, image)
-#                 updated_data['after_image'] = filename
-                
-#             # DB에 직접 업뎃
-#             stamp.objects.filter(event_name=event_name).update(**updated_data)
-#             return redirect('a_events')  # 수정 후 도장 목록으로 리디렉션
-        
-#     return render(request, 'admin_page/a_modify.html', {'stamp_instance': stamp_instance})
 
 
 # stamp 추가
@@ -229,9 +171,6 @@ def a_add(request):
                 # 필요한 모든 데이터가 제출되지 않은 경우에 대한 처리
                 error_message = "모든 필드를 입력해야 합니다."
         
-        # 여기서 삭제 왜 필요하지?
-        # if action == 'delete':
-        #     return redirect('a_events')
     else:
         error_message = ""
 
@@ -279,6 +218,8 @@ def a_search(request):
         
         if student_id and major:
             stamp_collections = stamp_collection.objects.filter(student__major__icontains=major, student__student_id__icontains=student_id, stamp=selected_event)
+        elif major:
+            stamp_collections = stamp_collection.objects.filter(student__major__icontains=major, stamp=selected_event)
         else:
             stamp_collections = stamp_collection.objects.none()
         
