@@ -158,7 +158,7 @@
     height: 800px;
     background-image: url(../../static/images/durumari2.png);
     background-size: 395px 650px;
-    z-index: 1000;
+    z-index: 10000;
     letter-spacing: normal;
 }
 .menu-items .menu_logo{
@@ -378,20 +378,6 @@
 
 
 /* modal-section */
-/* .modal-section .modal_cont {
-	opacity: 0;
-	animation: scaleUp 0.5s cubic-bezier(0.165, 0.85, 0.44, 1) forwards;
-}
-.modal-section {
-    max-width: 415px;
-    min-height: 100vh;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    position: fixed;
-    z-index: 20;
-    background: rgba(0, 0, 0, 0.5);
-} */
 .hidden{
     display:none;
 }
@@ -407,7 +393,7 @@
     color: #758DBB;
     position: relative;
     margin-top: -350px;
-    z-index: 80;
+    z-index: 20;
 }
 .modal_cont p {
     margin-bottom: 0;
