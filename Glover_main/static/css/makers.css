@@ -435,6 +435,7 @@
 .team a {
     text-decoration: none;    
     color: #000000;
+    z-index: 10;
 }
 .makers_logo {
     z-index: 10;
@@ -462,10 +463,6 @@
 .box_tool{
     z-index: 10;
 }
-/* .m_mimo1 img {
-    width: 60px;
-    height: 60px;
-} */
 .m_box {
     background-color: #fff;
     border: 1px solid #2A4884;

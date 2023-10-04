@@ -159,7 +159,7 @@
     height: 800px;
     background-image: url(../../static/images/durumari2.png);
     background-size: 395px 650px;
-    z-index: 1000;
+    z-index: 10000;
     letter-spacing: normal;
 }
 .menu-items .menu_logo{
