@@ -16,7 +16,7 @@ class stamp(models.Model):
 
 class stamp_collection(models.Model):
     student = models.ForeignKey('student', on_delete=models.CASCADE)
-    stamp = models.ForeignKey(stamp, on_delete=models.CASCADE)
+    stamp = models.ForeignKey(stamp, on_delete=models.CASCADE, to_field='event_name', related_name='collections')
     is_collected = models.BooleanField(default=False)
     
     def __str__(self):

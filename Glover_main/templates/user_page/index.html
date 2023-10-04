@@ -93,8 +93,8 @@
         <!-- login section -->
         <form class="login" id="login" method="post">
             {% csrf_token %}
-            <select class="custom-select" id="major_dropdown" name="major">
-                <option value="0" disabled selected>학과</option>
+            <select class="custom-select" id="major_dropdown" name="major" required>
+                <option value="" disabled selected>학과</option>
                 <option value="관광개발학과">관광개발학과</option>
                 <option value="경영학과">경영학과</option>
                 <option value="글로벌물류학부">글로벌물류학부</option>
@@ -102,7 +102,7 @@
                 <option value="산업경영공학과">산업경영공학과</option>
             </select>
             <div class="id">
-                <input type="text" name="student_id" id="student_id" placeholder="학번" required>
+                <input type="text" name="student_id" id="student_id" placeholder="학번">
             </div>
             <button class="submit" type="submit" id="modal_open">조회</button>    
             <br>
