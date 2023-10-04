@@ -400,13 +400,14 @@
     background-color: #ffffff;
     width: 310px;
     height: 270px;
-    margin-left: 52px;
+    margin-left: auto;
+    margin-right:auto;
     border: 4px solid #91AEE6;
     border-radius: 30px;
     color: #758DBB;
-    position: absolute;
+    position: relative;
     margin-top: -350px;
-    z-index: 100;
+    z-index: 80;
 }
 .modal_cont p {
     margin-bottom: 0;
@@ -523,8 +524,4 @@
         bottom:0;
     } */
 
-    /* 스탬프 상세 정보 모달창 위치 조정 */
-    .modal_cont{
-        margin-left:34px;
-    }
 }
