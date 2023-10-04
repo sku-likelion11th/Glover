@@ -1,7 +1,6 @@
 const element = document.querySelector('.navbar'); // 요소 선택
 element.classList.remove('blur-effect'); // "blur" 클래스 제거
 
-var studentMajorValue = document.getElementById("major")
 var studentIdInput = document.getElementById("student_id"); // 학번 입력 필드
 var consentStatus = document.getElementById("consent_status");  // 동의 여부를 표시할 엘리먼트
 
@@ -14,10 +13,8 @@ submitButton.addEventListener("click", async function(event) {
     var is_consented = '';
     var not_blur = '';
     var studentIdValue = studentIdInput.value;
-    var studentMajorValue = studentMajorValue.value;
 
     try {
-        const response0 = await fetch(`search/${studentIdValue}`)
         const response = await fetch(`search/${studentIdValue}`);
         if (!response.ok) {
             throw new Error('Network response was not ok');

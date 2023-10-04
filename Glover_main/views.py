@@ -16,20 +16,25 @@ def main(request, student_id=None):
     if request.method == 'POST':
         student_id = request.POST.get('student_id')
         major = request.POST.get('major')
-        
-        try:
-            student_info = student.objects.get(student_id=student_id, major__icontains=major)
-            stamp_collections = stamp_collection.objects.filter(student=student_info)
-            
-            student_info.consent = True
-            flag = student_info.consent
-            context = {'consent': flag}
-            student.objects.filter(student_id=student_info.student_id).update(**context)
-            
-            return render(request, 'user_page/participation.html', {'student_info': student_info, 'stamp_collections':stamp_collections, 'flag': flag})
-        
-        except ObjectDoesNotExist:
-            # 조회에 실패한 경우 오류 메시지를 사용자에게 표시
+
+        # student_id와 major가 None이 아닌지 확인
+        if major is not None:
+            try:
+                student_info = student.objects.get(student_id=student_id, major__icontains=major)
+                stamp_collections = stamp_collection.objects.filter(student=student_info)
+
+                student_info.consent = True
+                flag = student_info.consent
+                context = {'consent': flag}
+                student.objects.filter(student_id=student_info.student_id).update(**context)
+
+                return render(request, 'user_page/participation.html', {'student_info': student_info, 'stamp_collections': stamp_collections, 'flag': flag})
+
+            except ObjectDoesNotExist:
+                # 조회에 실패한 경우 오류 메시지를 사용자에게 표시
+                error_message = "학생 정보를 찾을 수 없습니다."
+                return render(request, 'user_page/index.html', {'error_message': error_message, 'flag': False})
+        else:
             error_message = "학생 정보를 찾을 수 없습니다."
             return render(request, 'user_page/index.html', {'error_message': error_message, 'flag': False})
 
@@ -131,7 +136,7 @@ def a_events(request):
             ori_stamp = request.POST.get('ori_name')  # 삭제할 스탬프의 ID를 받아옴
             
             try:
-                delstamp = stamp.objects.get(pk=ori_stamp)  # 해당 ID의 스탬프 객체를 가져옴
+                delstamp = stamp.objects.get(event_name=ori_stamp)  # 해당 ID의 스탬프 객체를 가져옴
                 delstamp.delete()  # 스탬프 삭제
                 
                 return redirect('a_events')  # 삭제 후 리다이렉트
