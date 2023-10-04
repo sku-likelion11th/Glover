@@ -4,7 +4,8 @@ from django.dispatch import receiver
 
 # Create your models here.
 class stamp(models.Model):
-    event_name = models.CharField(max_length=200, primary_key=True)
+    stamp_id = models.AutoField(primary_key=True)
+    event_name = models.CharField(max_length=200, unique=True)
     event_info = models.TextField()
     event_start = models.DateField()
     event_end = models.DateField()
@@ -16,7 +17,7 @@ class stamp(models.Model):
 
 class stamp_collection(models.Model):
     student = models.ForeignKey('student', on_delete=models.CASCADE)
-    stamp = models.ForeignKey(stamp, on_delete=models.CASCADE, to_field='event_name', related_name='collections')
+    stamp = models.ForeignKey(stamp, on_delete=models.CASCADE)
     is_collected = models.BooleanField(default=False)
     
     def __str__(self):
