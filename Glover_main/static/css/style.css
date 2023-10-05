@@ -146,13 +146,14 @@
 /* hamburger menu section */
 .navbar .menu-items {
     margin-top: 55px;
-    width: auto;
+    width: 100%;    /* 가로 길이 auto -> 100% */
     height: 650px;
     transform: translate(150%);
     display: flex;
     flex-direction: column;
     transition: transform 0.5s ease-in-out;
     z-index: 100;   
+    align-items: center;    /*align-items center 추가*/
 }
 .menu_durumari {
     width: 395px;
@@ -554,9 +555,9 @@
 /* 아이폰 SE 또는 375px 미만의 화면 너비에서 스타일을 적용 */
 @media (max-width: 376px) {
     
-    .navbar .menu-items {
+    /* .navbar .menu-items {
         margin-left:-23px;
-    }
+    } */
     /* 언덕 위치 조정 */
     /* .hill{
         position: absolute;
