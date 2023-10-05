@@ -348,7 +348,7 @@
 /* 아이폰 SE 또는 375px 미만의 화면 너비에서 스타일을 적용 */
 @media (max-width: 376px) {
     
-    .navbar .menu-items {
+    /* .navbar .menu-items {
         margin-left:-23px;
-    }
+    } */
 }
