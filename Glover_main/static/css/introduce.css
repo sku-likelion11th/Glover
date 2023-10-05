@@ -143,13 +143,14 @@
 /* hamburger menu section */
 .navbar .menu-items {
     margin-top: 55px;
-    width: 395px;
+    width: 100%;    /* 가로 길이 auto -> 100% */
     height: 650px;
     transform: translate(150%);
     display: flex;
     flex-direction: column;
     transition: transform 0.5s ease-in-out;
     z-index: 100;   
+    align-items: center;    /*align-items center 추가*/
 }
 .menu_durumari {
     width: 395px;
