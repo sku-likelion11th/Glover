@@ -6,6 +6,7 @@ const modalStart = document.querySelector('.modal_start');
 const modalEnd = document.querySelector('.modal_finish');
 const modalClose = document.querySelector('.bi-x');
 
+/* <input type="date"> yyyy-mm-dd에서 yy-mm-dd로 변경하는 코드 */
 function formatDate(dateString) {
     const date = new Date(dateString);
     const year = date.getFullYear().toString().slice(-2); // Get the last two digits of the year
@@ -36,4 +37,3 @@ function init() {
 }
 
 init();
-

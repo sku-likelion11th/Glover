@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../static/images/g_favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../static/images/g_favicon.ico">
+    <link rel="icon" href={% static "images/g_favicon.ico"%}>
     <title>글 Lover</title>
     <link rel="stylesheet" href={% static "css/style.css"%}?{% now 'U' %}>
     <script src={% static "js/main.js" %}?{% now 'U' %} defer></script>
@@ -63,8 +62,7 @@
 
         <!-- header section -->
         <div class="header-section">
-            <div class="header-circle">
-            </div>
+            <div class="header-circle"></div>
             <div class="header_title">
                 <p class="header_name header-font">글천절</p>
                 <p class="header_sub header-font">: 글Lover</p>
@@ -93,16 +91,18 @@
         <!-- login section -->
         <form class="login" id="login" method="post">
             {% csrf_token %}
-            <select class="custom-select" id="major_dropdown" name="major" required>
-                <option value="" disabled selected>학과</option>
-                <option value="관광개발학과">관광개발학과</option>
-                <option value="경영학과">경영학과</option>
-                <option value="글로벌물류학부">글로벌물류학부</option>
-                <option value="동아시아물류학부">동아시아물류학부</option>
-                <option value="산업경영공학과">산업경영공학과</option>
-            </select>
+            <div class="selectBox">
+                <select class="custom-select" id="major_dropdown" name="major">
+                    <option value="0" disabled selected>학과</option>
+                    <option value="관광개발학과">관광개발학과</option>
+                    <option value="경영학과">경영학과</option>
+                    <option value="글로벌물류학부">글로벌물류학부</option>
+                    <option value="동아시아물류학부">동아시아물류학부</option>
+                    <option value="산업경영공학과">산업경영공학과</option>
+                </select>
+            </div>
             <div class="id">
-                <input type="text" name="student_id" id="student_id" placeholder="학번">
+                <input type="text" name="student_id" id="student_id" placeholder="학번" required>
             </div>
             <button class="submit" type="submit" id="modal_open">조회</button>    
             <br>

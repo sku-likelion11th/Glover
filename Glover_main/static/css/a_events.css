@@ -509,7 +509,7 @@ input[type="date"] {
     background: url(../../static/images/calendar.svg) no-repeat right 10px center / 10px auto;
     width:100px;
     height:30px;
-    font-size:12px;
+    font-size:11px;
     color:#91AEE6;
     background-color: #E5EFFE;
     border:none;

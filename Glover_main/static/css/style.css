@@ -146,20 +146,21 @@
 /* hamburger menu section */
 .navbar .menu-items {
     margin-top: 55px;
-    width: auto;
+    width: 100%;    /* 가로 길이 auto -> 100% */
     height: 650px;
     transform: translate(150%);
     display: flex;
     flex-direction: column;
     transition: transform 0.5s ease-in-out;
     z-index: 100;   
+    align-items: center;    /*align-items center 추가*/
 }
 .menu_durumari {
     width: 395px;
     height: 800px;
     background-image: url(../../static/images/durumari2.png);
     background-size: 395px 650px;
-    z-index: 1000;
+    z-index: 10000;
     letter-spacing: normal;
 }
 .menu-items .menu_logo{
@@ -335,12 +336,18 @@
     flex-direction:column;
     align-items:center;
 }
+.selectBox {
+    display: flex;
+    justify-content: center; /* 텍스트를 수평으로 중앙 정렬 */
+    align-items: center; /* 텍스트를 수직으로 중앙 정렬 */
+    width: 180px;
+}
 .custom-select {
     position: relative;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    width: 180px;
+    width: 100%;
     height: 52px;
     border-color: #91AEE6;
     border-radius: 30px;
@@ -352,23 +359,12 @@
     font-size: 16px;
     outline: none;
     padding: 0; /* 패딩 제거 */
+    background-color: #ffffff;
     background-image: url('/static/images/downarrow.png');
     background-repeat: no-repeat;
     background-position: right 10px center; /* 오른쪽 여백을 10px로 조절 */
-
     /* 추가된 스타일 */
-    display: flex;
-    justify-content: center; /* 텍스트를 수평으로 중앙 정렬 */
-    align-items: center; /* 텍스트를 수직으로 중앙 정렬 */
-}
-
-/* 텍스트 정렬을 중앙으로 조절 */
-.custom-select select {
-    width: 100%; /* select 요소가 전체 너비를 차지하도록 설정 */
-    border: none;
-    outline: none;
-    background: transparent;
-    text-align: center;
+    
 }
 
 .custom-select:focus {
@@ -554,9 +550,9 @@
 /* 아이폰 SE 또는 375px 미만의 화면 너비에서 스타일을 적용 */
 @media (max-width: 376px) {
     
-    .navbar .menu-items {
+    /* .navbar .menu-items {
         margin-left:-23px;
-    }
+    } */
     /* 언덕 위치 조정 */
     /* .hill{
         position: absolute;
