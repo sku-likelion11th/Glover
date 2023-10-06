@@ -359,6 +359,7 @@
     border-radius: 30px;
     text-align: center;
     text-align-last: center;
+    -webkit-align-last: center;
     -ms-text-align-last: center;
     -moz-text-align-last: center;
     color: #758DBB;
@@ -373,7 +374,6 @@
     background-repeat: no-repeat;
     background-position: right 10px center; /* 오른쪽 여백을 10px로 조절 */
     /* 추가된 스타일 */
-    
 }
 
 .custom-select:focus {
@@ -394,6 +394,7 @@
     text-align:center;
     box-shadow: 3px 3px 5px  rgba(0, 0, 0, 0.2);
     z-index:2;
+    padding: 11px 0;
 }
 .id input{
     width:140px;
@@ -403,7 +404,6 @@
     text-align: center;
     outline:none; /* input 눌렀을 때 테두리 제거 */
     border-bottom: 2px solid #758DBB;
-    margin-top:10px;
     color: #758DBB;
 }
 .id input::placeholder {

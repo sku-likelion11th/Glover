@@ -84,18 +84,20 @@
         <!-- stamp section -->
         <div class="stamp-section d-flex justify-content-center text-center">
             <div class="stamp_tool">
-                <div class="tool_info d-flex justify-content-around">
-                    <div class="tool_number">{{ student_info.student_id }}</div>
-                    <div class="tool_name">{{ student_info.full_name }}</div>
-                </div>
-                <div class="stamp">
-                    {% for collection in stamp_collections %}
-                        {% if collection.is_collected %}
-                        <button class="stampBtn" data-name="{{ collection.stamp.event_name }}" data-info="{{ collection.stamp.event_info }}" data-start="{{ collection.stamp.event_start }}" data-end="{{ collection.stamp.event_end }}">
-                            <img src="{{ collection.stamp.image.url }}" alt="수집 이미지" width="100" height="100">
-                        </button>
-                        {% endif %}
-                    {% endfor %}
+                <div class="stamp-middle">
+                    <div class="tool_info d-flex justify-content-around">
+                        <div class="tool_number">{{ student_info.student_id }}</div>
+                        <div class="tool_name">{{ student_info.full_name }}</div>
+                    </div>
+                    <div class="stamp">
+                        {% for collection in stamp_collections %}
+                            {% if collection.is_collected %}
+                            <button class="stampBtn" data-name="{{ collection.stamp.event_name }}" data-info="{{ collection.stamp.event_info }}" data-start="{{ collection.stamp.event_start }}" data-end="{{ collection.stamp.event_end }}">
+                                <img src="{{ collection.stamp.image.url }}" alt="수집 이미지" width="100" height="100">
+                            </button>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
