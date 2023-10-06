@@ -77,7 +77,7 @@
         <div id="modal">
             <div class="modal-bg">
                 <div class="modal-cont">
-                    <form method='post' class="tmoney-font" enctype="multipart/form-data" action="{% url 'a_add' %}">
+                    <form method='post' class="tmoney-font" enctype="multipart/form-data" action="{% url 'a_add' %}" id="add-form">
                         {% csrf_token %}
                         {{ error_message }}
                         <div class="modal-head">
@@ -109,11 +109,14 @@
                         </div>
                         <!-- button -->
                         <div class="button">
-                            <button type="submit" class="submit" name="action" value="save">저장</button>
+                            <button type="submit" class="submit" name="action" value="save" id="saveButton">저장</button>
                             <button type="submit" class="del"  name="action" value="delete" onclick="location.href='{% url 'a_events' %}'">삭제</button>
                         </div>
                     </form>
                 </div>
+            </div>
+            <div class="loading-overlay" id="loading-overlay">
+                <div class="loading-spinner"></div>
             </div>
         <!-- footer section -->
         <div class="footer-section jamsil-font">

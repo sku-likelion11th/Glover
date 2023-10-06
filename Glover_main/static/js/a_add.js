@@ -21,4 +21,16 @@ imgBoxes.forEach(function(imgBox) {
     });
 });
 
+function showLoading() {
+    document.getElementById('loading-overlay').style.display = 'flex';
+}
 
+// 폼 제출 후 로딩 창을 숨기는 함수 (예: 폼 제출 후 서버 응답 받은 후)
+function hideLoading() {
+    document.getElementById('loading-overlay').style.display = 'none';
+}
+
+// 폼 제출 버튼 클릭 시 로딩 창을 표시
+document.getElementById('add-form').addEventListener('submit', function() {
+    showLoading();
+});
