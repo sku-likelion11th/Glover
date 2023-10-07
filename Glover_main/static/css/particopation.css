@@ -369,7 +369,7 @@
     color: #758DBB;
     margin: 15px 0 5px 0;
 }
-.stamp {
+.stamp {    
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-left: 5px;
@@ -377,7 +377,7 @@
 .stampBtn {
     background: none;
     border: none;
-    cursor: pointer;
+    padding: 1px 6px;
 }
 .stamp img{
     width: 80px;
@@ -418,11 +418,14 @@
 }
 .modal_name p {
     margin-left: 15px;
+    text-overflow: ellipsis; /* 값이 길어지면 ...으로 변경 */
+    width: 245px;
 }
 .bi-x{
     background: none;
     border: 0;
-    height: 30px;
+    width: 15px;
+    height: 15px;
     margin-top: -10px;
     margin-right: 0px;
 }
