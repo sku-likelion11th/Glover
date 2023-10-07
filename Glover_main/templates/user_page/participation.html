@@ -15,6 +15,10 @@
     <script src="https://kit.fontawesome.com/855cb859ed.js" crossorigin="anonymous"></script>
     <!--jQuery 연결 링크-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- eruda 모바일에서 개발자 도구 보는 코드 -->
+    <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <script>eruda.init();</script>
+    <script>run();</script>
 </head>
 <body>
     <div class="display-container jamsil-font">
@@ -83,7 +87,7 @@
 
         <!-- stamp section -->
         <div class="stamp-section d-flex justify-content-center text-center">
-            <div class="item">
+            <div class="item"><!-- 푸터 고정을 위한 div -->
                 <div class="stamp_tool">
                     <div class="stamp-middle">
                         <div class="tool_info d-flex justify-content-around">
