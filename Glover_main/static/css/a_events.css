@@ -372,6 +372,7 @@
     border-radius: 60px;
     overflow-y: scroll;
     box-shadow: inset 5px 5px #bac9e6;
+    padding: 10px 15px;
 }
 /* 스크롤바 트랙 위쪽 여백 공간 주기 위해서 */
 .stamp_tool::-webkit-scrollbar-button:vertical:start:decrement,
@@ -398,14 +399,15 @@
 }
 
 .stamp {
+    width: 290px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    margin-left: 15px;
-    padding: 15px 0;
+    margin-left: 5px;
 }
 .stampBtn {
     background: none;
     border: none;
+    padding: 1px 6px;
 }
 .stamp img{
     width: 80px;
@@ -449,11 +451,15 @@
     color: #758DBB;
     resize: none;
     outline:none; 
+    width: 245px;
 }
 .bi-x{
     background: none;
     border: 0;
-    height: 10px;
+    width: 15px;
+    height: 30px;
+    margin-top: -10px;
+    margin-right: 0px;
 }
 .modal_line {
     width: 230px;
@@ -506,8 +512,8 @@
 }
 input[type="date"] {
     padding: 0 8px;
-    background: url(../../static/images/calendar.svg) no-repeat right 10px center / 10px auto;
-    width:100px;
+    background: url(../../static/images/calendar.svg) no-repeat right 7px center / 12px auto;
+    width:105px;
     height:30px;
     font-size:11px;
     color:#91AEE6;
@@ -642,7 +648,7 @@ input[type="date"] {
 
 /* footer section */
 .footer-section {
-    margin-top: 20px;
+    margin: 20px 0;
 }
 .footer-section p{
     z-index: 5;
@@ -656,4 +662,11 @@ input[type="date"] {
     z-index: 5;
     color: rgba(97,97, 97, 0.5);
     margin: 3px 2px;
+}
+
+@media (max-width: 376px) {
+    
+    .navbar .menu-items {
+        margin-left:-23px;
+    }
 }

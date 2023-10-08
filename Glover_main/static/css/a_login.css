@@ -203,7 +203,7 @@
 }
 .admin_id input{
     width:140px;
-    height:23px;
+    height:30px;
     background: none;
     border:none;
     text-align: center;
@@ -227,7 +227,7 @@
 }
 .admin_pwd input{
     width:140px;
-    height:23px;
+    height:30px;
     background: none;
     border:none;
     text-align: center;
