@@ -445,6 +445,7 @@ select option{
     color:#2a4884ed
 }
 .table-body td input {
+    width: 160px;
     overflow: ellipsis;
 }
 .check{
