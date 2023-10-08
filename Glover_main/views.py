@@ -6,6 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
+from user_counter import views
 from django.conf import settings
 import os
 
@@ -38,7 +39,8 @@ def main(request, student_id=None):
             error_message = "학생 정보를 찾을 수 없습니다."
             return render(request, 'user_page/index.html', {'error_message': error_message, 'flag': False})
 
-    return render(request, 'user_page/index.html')
+    return views.user_count(request)
+
 
 # is_consented
 def is_consented(request, student_id):
@@ -59,6 +61,8 @@ def introduce(request):
 # 만든이들
 def makers(request):
 	return render(request, 'user_page/makers.html')
+
+
 
 
 
@@ -160,7 +164,6 @@ def a_add(request):
             event_end = request.POST['event_end']
             image = request.FILES.get('after_image') if 'after_image' in request.FILES else None
 
-            print(event_name)
             # 데이터 유효성 검사 및 저장
             if event_name and event_info and event_start and event_end and image:
                 mystamp = stamp (
