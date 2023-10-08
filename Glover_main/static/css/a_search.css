@@ -444,9 +444,8 @@ select option{
     border-color: #91ade660;
     color:#2a4884ed
 }
-.table-body #table-major {
-    width: 160px;
-    overflow: ellipsis;
+.table-body .table-major {
+    width: 130px;
 }
 .check{
     margin: 25px 0 30px 0;
