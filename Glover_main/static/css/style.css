@@ -243,6 +243,7 @@
     color:#576B94;
     margin-top: 10px;
     margin-bottom: 0px;
+    font-size: 16px;
 }
 
 
@@ -331,6 +332,7 @@
     text-align: center;
     text-shadow: 0px 100px 70px #ffffffc9;    /* 두루마리 뒤 반짝이*/
     z-index:2;
+    font-size: 16px;
 }
 
 /* login section  */
@@ -422,6 +424,7 @@
     font-weight: bold;
     box-shadow: 3px 3px 5px  rgba(0, 0, 0, 0.2);
     z-index:2;
+    padding-top: 2px;
 }
 
 /* modal section */
