@@ -444,7 +444,7 @@ select option{
     border-color: #91ade660;
     color:#2a4884ed
 }
-.table-body td input {
+.table-body .table-major {
     width: 160px;
     overflow: ellipsis;
 }
