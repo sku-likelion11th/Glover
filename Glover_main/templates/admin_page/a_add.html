@@ -80,7 +80,7 @@
                     <form method='post' class="tmoney-font" enctype="multipart/form-data" action="{% url 'a_add' %}" id="add-form">
                         {% csrf_token %}
                         {{ error_message }}
-                        <div class="modal-head">
+                        <div class="modal-head d-flex justify-content-between">
                             <input class="header-font" type="text" name="event_name" id="event_name" placeholder="사업명" autofocus>
                             <button class="bi-x" onclick="location.href='{% url 'a_events' %}'">
                                 <svg width="15" height="15" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -317,6 +317,7 @@
     margin-top: 25px;
     position:relative;
 }
+/* footer가 올라오는 것을 방지해줌 */
 .item{
     width: 350px;
     height:470px;

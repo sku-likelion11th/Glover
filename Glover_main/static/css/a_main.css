@@ -224,7 +224,7 @@
     text-align: center;
     z-index:1;
     margin-top:50px;
-    
+    height: auto;
 }
 .header_name{
     font-size: 40px;
@@ -324,6 +324,7 @@
     margin: auto;
     position:relative;
     z-index: 2;
+    height: auto;
 }
 .explan{
     position: relative;
@@ -340,6 +341,7 @@
     display:flex;
     flex-direction:column;
     align-items:center;
+    height: auto;
 }
 .eventBtn{
     margin-top: 26px;
@@ -366,6 +368,7 @@
 /* footer section */
 .footer-section {
     margin-top: 40px;
+    height: auto
 }
 .footer-section p{
     z-index: 2;

@@ -308,15 +308,19 @@
 select{
     width:170px;
     height:30px;
+    background-color: #ffffff;
     border-color:#91AEE6;
     border-radius: 30px;
     text-align: center;
+    text-align-last: center;
+    -webkit-align-last: center;
     color:#758DBB;
     font-weight:bold;
     box-shadow: 3px 3px 5px  rgba(0, 0, 0, 0.2);
     z-index:2;
     font-size:15px;
     outline:none;
+    padding-left: 15px;
 }
 select:focus{
     border-color:#2a4884;

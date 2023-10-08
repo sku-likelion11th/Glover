@@ -312,7 +312,8 @@
 }
 /* durumari section */
 .durumari-section {
-    height: 500px;
+    /* 전체 100vh - (nav + header 높이) - 이미지 높이 */
+    height: calc(100vh - 211px - 180px);
 }
 .durumari_img img {
     z-index: 10;
@@ -336,13 +337,11 @@
 
 
 /* footer section */
-.hill {
-    /* 꼼수 */
-}
 .hill img {
     width: 415px;
     height: 180px;
     opacity: 0.7;
+    margin-top: 120px;
 }
 
 /* 아이폰 SE 또는 375px 미만의 화면 너비에서 스타일을 적용 */
