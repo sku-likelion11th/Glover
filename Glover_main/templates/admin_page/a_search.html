@@ -135,7 +135,7 @@
                     </thead>
                     {% for student in stamp_collections %}
                     <tbody class="table-body">
-                      <td><input id="table-major" type="hidden" name='a_major'>{{ student.student.major }}</td>
+                      <td class="table-major"><input type="hidden" name='a_major'>{{ student.student.major }}</td>
                       <td>{{ student.student_id }}</td>
                       <td>{{ student.student.full_name }}</td>
                       <td><input type="checkbox" name="event_check" id='cb_{{ student.id }}' value="{{ student.id }}" {% if student.is_collected %} checked {% endif %}>
